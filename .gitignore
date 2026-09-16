@@ -1,2 +1,18 @@
 .DS_Store
 ._*
+
+# Local access, credentials and large private artifacts
+LOCAL-ACCESS.md
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+*.pem
+*.key
+*.nmconnection
+*.img
+*.img.gz
+*.img.xz
+private/
+backups/

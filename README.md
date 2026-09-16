@@ -8,11 +8,17 @@
 
 *Control panel preview from the project demonstration. The video includes Polish narration.*
 
+## Build your own PiTalk Pro
+
+This repository is the shared home for the enclosure, software, configuration examples and build knowledge. Start with the [documentation hub (Polish)](docs/README.md), [build guide](docs/build/README.md), [parts list](docs/build/HARDWARE.md) and [project readiness](docs/project/READINESS.md).
+
+**Current status: working prototype, reproduction in progress.** A complete clean-install procedure and physical alpha-image boot test are still pending. The repository does not yet provide a validated firmware download. See [contributing](CONTRIBUTING.md) to help complete the build documentation.
+
 ## About the project
 
 PiTALK PRO brings a Raspberry Pi 3 Model B, an Adafruit PiTFT 2.2″ display and a Sabrent USB sound card into a custom enclosure inspired by classic handheld radios. Four physical buttons sit beside the display. The enclosure includes a separate front panel, ventilation, decorative knobs and a removable decorative antenna.
 
-This repository currently contains **printable STL models and a demonstration video**. Application source code, firmware and software installation instructions are not included in this release.
+This repository contains **printable STL models, demonstration materials and a software source snapshot**. Start software development with [the project handoff](docs/handoff/START-HERE.md) and [software notes](software/README.md). The software snapshot and experimental image tooling are not yet a validated public firmware release.
 
 The mechanical design was refined through repeated physical print-and-fit checks. The latest file set combines the **V32 body**, **V38 flat front** and **V11 button caps**. Fit still depends on the exact hardware and printer tolerances.
 
@@ -50,7 +56,7 @@ Download the repository with **Code → Download ZIP**, or open an individual fi
 | USB audio | Sabrent adapter used in the prototype; measured housing approximately **34 × 23 × 10 mm** |
 | Side push button | PBS-110-style momentary button matching the prototype; check dimensions before ordering |
 | Lower front fasteners | **2 × countersunk M3 × 12 mm** and **2 × M3 nuts**, measured 5 mm across flats and 2 mm thick |
-| Display/front fasteners | Four matching countersunk M3 screws; select length for the actual display spacer stack |
+| Display/front fasteners | Four countersunk M3×12 screws and four spacers; spacer length still needs documenting |
 | Power | External power supply appropriate for the Raspberry Pi; no internal battery compartment |
 
 Measure replacement components before printing. A shared product name does not guarantee the same casing or shaft dimensions. Keep the existing display spacers and check the front screw length against the assembled stack.
@@ -70,14 +76,18 @@ The project was developed using a **Creality K1**. PLA and Creality CR-PETG were
 
 ## Assembly
 
-1. Remove support material and clean the openings. Check all fits without glue first.
-2. Slide the two lower M3 nuts into their pockets **before installing the electronics**. The pockets prevent rotation; a small amount of adhesive may retain the nuts, but keep it out of the threads.
-3. Fit the side button, then the Raspberry Pi and display using the matching spacers. Confirm that the connectors line up and that no metal parts short against the boards.
-4. Install the Sabrent adapter and route the wiring clear of the front panel, vents and fasteners.
-5. Insert the four button caps from the inside of the front. Check that they move freely and do not hold the display buttons down.
-6. Place the front on the body. Fit the display/front screws and the two lower **M3 × 12 mm** screws. Tighten gently; do not force the panel or bottom out a screw.
-7. Dry-fit and then attach the decorative knobs and antenna assembly. Keep adhesive away from electronics and moving buttons.
-8. Check connector access, button travel and ventilation before powering up.
+Follow the [full assembly guide](docs/build/ASSEMBLY.en.md), with the [illustrated Polish version](docs/build/ASSEMBLY.md). Assemble the front first:
+
+1. Place the four button caps into the front slots.
+2. Insert four M3×12 screws, fit the LCD and tighten gently.
+3. Screw on the four spacers; set the completed front aside.
+4. Solder two 10 cm wires to PTT and insulate the joints with heat-shrink tubing.
+5. Mount PTT in the rear enclosure and secure its body with hot glue.
+6. Bend physical Pi header pins 37 and 39 inward, solder the PTT wires and insulate the joints as described in the full guide.
+7. Fit optional dongles into the lower USB sockets before placing the Pi in the case.
+8. Insert the Raspberry Pi, then the two M3 nuts and the microSD card.
+9. Install the USB sound adapter.
+10. Fit the completed front and tighten the two lower M3×12 screws.
 
 ## Repository layout
 

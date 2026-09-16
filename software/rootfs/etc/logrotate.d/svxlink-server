@@ -1,0 +1,12 @@
+/var/log/svxlink {
+    missingok
+    notifempty
+    weekly
+    rotate 7
+    nocompress
+    create 0644 sqlink adm
+    postrotate
+        killall -HUP svxlink
+    endscript
+}
+

@@ -1,0 +1,17 @@
+[Unit]
+Description=SQLink local Wi-Fi management
+Requires=NetworkManager.service
+After=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/sbin/sqlink-wifi-helper.py
+RuntimeDirectory=sqlink-wifi
+RuntimeDirectoryMode=0755
+UMask=0077
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=80
+
+[Install]
+WantedBy=multi-user.target

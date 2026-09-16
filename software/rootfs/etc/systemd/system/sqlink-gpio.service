@@ -1,0 +1,12 @@
+[Unit]
+Description=Prepare SQLink software PTT GPIO24
+Before=svxlink.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/sqlink-gpio-setup.sh
+ExecStop=/bin/sh -c 'echo 1 > /sys/class/gpio/gpio536/value 2>/dev/null || true'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

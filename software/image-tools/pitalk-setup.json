@@ -1,0 +1,13 @@
+{
+  "hostname": "pitalk-pro",
+  "system_password": "",
+  "wifi_country": "PL",
+  "wifi_ssid": "",
+  "wifi_password": "",
+  "reflector_host": "sqlink.pl",
+  "callsign": "",
+  "reflector_password": "",
+  "default_tg": 0,
+  "monitored_tgs": "",
+  "monitor_timeout": 30
+}

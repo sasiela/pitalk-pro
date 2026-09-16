@@ -1,0 +1,6 @@
+# Reconstructed from the recorded headless Bluetooth fix; no pairing data.
+wireplumber.profiles = {
+  main = {
+    monitor.bluez.seat-monitoring = disabled
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "exported_utc": "2026-09-16T13:54:15.322424+00:00",
+  "provenance": "Read-only running-device snapshot. Closed code/service allowlist, no private home files or live authentication configuration.",
+  "sanitization": [
+    "Owner callsign and old hostname scrubbed.",
+    "Owner LAN/IP replaced by examples 192.168.1.0/24 and 192.168.1.100. Adjust server.py local_access before deployment."
+  ],
+  "files": {
+    "etc/logrotate.d/svxlink-server": {
+      "export_sha256": "b2e31f6e4d1250c2fd64ede517976faf5ba08c1a43a4adc73caf032c50a49051",
+      "source_metadata": {
+        "sha256": "b2e31f6e4d1250c2fd64ede517976faf5ba08c1a43a4adc73caf032c50a49051",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/pam.d/sqlink-web": {
+      "export_sha256": "b7bfbd5728fb0261c86615f0f14c6d0db9c7bc07dca80fb75002c389f6dcba3f",
+      "source_metadata": {
+        "sha256": "b7bfbd5728fb0261c86615f0f14c6d0db9c7bc07dca80fb75002c389f6dcba3f",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-bluetooth-helper.service": {
+      "export_sha256": "fb22f666fa9718ff7104573ac5124735c9ba39019e137338757a371b30ebed6b",
+      "source_metadata": {
+        "sha256": "fb22f666fa9718ff7104573ac5124735c9ba39019e137338757a371b30ebed6b",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-gpio.service": {
+      "export_sha256": "2edb3453a8261af6bfaa822773df2483f828b3205f7c99b0cc34efae8d885869",
+      "source_metadata": {
+        "sha256": "2edb3453a8261af6bfaa822773df2483f828b3205f7c99b0cc34efae8d885869",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-ptt-button.service": {
+      "export_sha256": "37a7265785926547e38ea8f5dceb87c9d942e599f9704ef4b6e4025600d67cf9",
+      "source_metadata": {
+        "sha256": "37a7265785926547e38ea8f5dceb87c9d942e599f9704ef4b6e4025600d67cf9",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-screen.service": {
+      "export_sha256": "be682f445e65b872e216ef3b5e5d0fac7492e2e653a299ff5ed495bd8ed6ebbe",
+      "source_metadata": {
+        "sha256": "be682f445e65b872e216ef3b5e5d0fac7492e2e653a299ff5ed495bd8ed6ebbe",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-screen.service.d/bluetooth.conf": {
+      "export_sha256": "794fc2380cc6a3a9dc9d54826bd2ffeaf8d6d5ed52402a907dab90aa011e2e54",
+      "source_metadata": {
+        "sha256": "794fc2380cc6a3a9dc9d54826bd2ffeaf8d6d5ed52402a907dab90aa011e2e54",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-screen.service.d/display.conf": {
+      "export_sha256": "199e5e6f06b2514cca084e69516ef709b04a10a7cbe4a444fef51d714a1f829d",
+      "source_metadata": {
+        "sha256": "199e5e6f06b2514cca084e69516ef709b04a10a7cbe4a444fef51d714a1f829d",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-screen.service.d/wifi.conf": {
+      "export_sha256": "25b2f57bb21bf8f98370fc6f85b255eef7e11044fd5f1b04b8682b932e40eba3",
+      "source_metadata": {
+        "sha256": "25b2f57bb21bf8f98370fc6f85b255eef7e11044fd5f1b04b8682b932e40eba3",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-web.service": {
+      "export_sha256": "4de9a58dbd906f3eb95dc33f480c2366d7bdfb1ba76cca42ee83a8275abc314e",
+      "source_metadata": {
+        "sha256": "4de9a58dbd906f3eb95dc33f480c2366d7bdfb1ba76cca42ee83a8275abc314e",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-web.service.d/audio.conf": {
+      "export_sha256": "00f80815f4ebbaf9d7f720d422aa09118a45ad3b34743b0a642c9da176c99d9f",
+      "source_metadata": {
+        "sha256": "00f80815f4ebbaf9d7f720d422aa09118a45ad3b34743b0a642c9da176c99d9f",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/sqlink-wifi-helper.service": {
+      "export_sha256": "ea2ec90dd0a891cbcfb145ac32fe861dfa9fb0f4e1cba4e1dad4d23d008ab0a1",
+      "source_metadata": {
+        "sha256": "ea2ec90dd0a891cbcfb145ac32fe861dfa9fb0f4e1cba4e1dad4d23d008ab0a1",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/svxlink.service.d/gpio.conf": {
+      "export_sha256": "6a5c4da4f24f93ac2aade0e93b2fdb3906b73ac04c3fe9d9a73a6caff793ec0b",
+      "source_metadata": {
+        "sha256": "6a5c4da4f24f93ac2aade0e93b2fdb3906b73ac04c3fe9d9a73a6caff793ec0b",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "etc/systemd/system/svxlink.service.d/pipewire.conf": {
+      "export_sha256": "865a8fd0be52d5a0825144545e981e1ac04c425dd94b3fd19c93ef18e66f9e40",
+      "source_metadata": {
+        "sha256": "865a8fd0be52d5a0825144545e981e1ac04c425dd94b3fd19c93ef18e66f9e40",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/listen_audio.py": {
+      "export_sha256": "d574e72d5e73208bbec4a4180eb1da8db45d12063ca761bb2e5c86dab41bae31",
+      "source_metadata": {
+        "sha256": "d574e72d5e73208bbec4a4180eb1da8db45d12063ca761bb2e5c86dab41bae31",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/server.py": {
+      "export_sha256": "52abe2f8ca00d0163cffbe7a6793bc1f1bfdc83b22884ab9e3828ce52631668b",
+      "source_metadata": {
+        "sha256": "319f8e0dc0bef925f3fa4359c397692332d5d3652435136b45b71cc3442bf3cf",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/static/app.js": {
+      "export_sha256": "ab50332986e8aad2f333e049ace15c7f22bf8e4d6a97a081b09499dd5621e073",
+      "source_metadata": {
+        "sha256": "ab50332986e8aad2f333e049ace15c7f22bf8e4d6a97a081b09499dd5621e073",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/static/index.html": {
+      "export_sha256": "33dcc9aaf9e2e074e7b59f32045dd10b8af285a16070ad4fc14f26ced539770c",
+      "source_metadata": {
+        "sha256": "33dcc9aaf9e2e074e7b59f32045dd10b8af285a16070ad4fc14f26ced539770c",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/static/listen-worklet.js": {
+      "export_sha256": "59be6745fbd627d893dcd305ae19acf6e2b1f5c053bbf1c86fd0d6bf798a5fe8",
+      "source_metadata": {
+        "sha256": "59be6745fbd627d893dcd305ae19acf6e2b1f5c053bbf1c86fd0d6bf798a5fe8",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "opt/sqlink-web/static/style.css": {
+      "export_sha256": "964b02360934b857b7677fc63f05ac9c93db040e5cec7c38933a521134795142",
+      "source_metadata": {
+        "sha256": "964b02360934b857b7677fc63f05ac9c93db040e5cec7c38933a521134795142",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/__init__.py": {
+      "export_sha256": "b5d26c38b36acc27f39dcca0f5815d7d921659c63e2f6667cc3ece689100fcf5",
+      "source_metadata": {
+        "sha256": "b5d26c38b36acc27f39dcca0f5815d7d921659c63e2f6667cc3ece689100fcf5",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/api.py": {
+      "export_sha256": "a320e86825ce46d7d2d1994f6549ab6ae44860d9b05b12cea7ce9cfc73bb8e5c",
+      "source_metadata": {
+        "sha256": "a320e86825ce46d7d2d1994f6549ab6ae44860d9b05b12cea7ce9cfc73bb8e5c",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/audio.py": {
+      "export_sha256": "d1fa0a9a7679f904c00f55f4cb39be0b24fa5d1a0095aae7d829b4f83a2aac3f",
+      "source_metadata": {
+        "sha256": "d1fa0a9a7679f904c00f55f4cb39be0b24fa5d1a0095aae7d829b4f83a2aac3f",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/audio_ui.py": {
+      "export_sha256": "75fef5aeff8d0d758e736001c616ad6bb460419aabd356ecc6466ff9c26df9ca",
+      "source_metadata": {
+        "sha256": "75fef5aeff8d0d758e736001c616ad6bb460419aabd356ecc6466ff9c26df9ca",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/bluetooth.py": {
+      "export_sha256": "aeeb80b06790411bf573b0193f483c902b49effff1fd8db11afaf4ab6dba6f90",
+      "source_metadata": {
+        "sha256": "aeeb80b06790411bf573b0193f483c902b49effff1fd8db11afaf4ab6dba6f90",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/bluetooth_ui.py": {
+      "export_sha256": "e026e167fe7074539eeafc8e9517469b63d9218c566a017c10b3d4821ee1a891",
+      "source_metadata": {
+        "sha256": "e026e167fe7074539eeafc8e9517469b63d9218c566a017c10b3d4821ee1a891",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/controller.py": {
+      "export_sha256": "ed28045231479bfa95b784a18314cbc7dfce357b05090cec932d902527d4d289",
+      "source_metadata": {
+        "sha256": "ed28045231479bfa95b784a18314cbc7dfce357b05090cec932d902527d4d289",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/display.py": {
+      "export_sha256": "60e6e99dad85eea87cdfd9578ad25df583478dd0640534c900a5823ad9de72f3",
+      "source_metadata": {
+        "sha256": "60e6e99dad85eea87cdfd9578ad25df583478dd0640534c900a5823ad9de72f3",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/gpio.py": {
+      "export_sha256": "3e7a9378901f2516b5e312eace633aa7b61e48b59b5d0d2684b4e1ef91f091c0",
+      "source_metadata": {
+        "sha256": "3e7a9378901f2516b5e312eace633aa7b61e48b59b5d0d2684b4e1ef91f091c0",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/network.py": {
+      "export_sha256": "cd2743edac1f71bd4dc4637268e886be557ac7fbefae50c80520d1b7c8efd441",
+      "source_metadata": {
+        "sha256": "cd2743edac1f71bd4dc4637268e886be557ac7fbefae50c80520d1b7c8efd441",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/radio_status.py": {
+      "export_sha256": "b45e7e3c0861eddf50ffdb22f553bf63eb36fc7e315b6b39a5f7a7295f765125",
+      "source_metadata": {
+        "sha256": "b45e7e3c0861eddf50ffdb22f553bf63eb36fc7e315b6b39a5f7a7295f765125",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/reflector.py": {
+      "export_sha256": "7e6b5e8c28098a01098173b2d2f1ce5f9c3ee814041fa232941f4524d5c3e9de",
+      "source_metadata": {
+        "sha256": "7e6b5e8c28098a01098173b2d2f1ce5f9c3ee814041fa232941f4524d5c3e9de",
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/restart_ui.py": {
+      "export_sha256": "76239818416aec55f2cc58a79e008f61bfbc93c46b4166ded9d4e905f884e1b5",
+      "source_metadata": {
+        "sha256": "76239818416aec55f2cc58a79e008f61bfbc93c46b4166ded9d4e905f884e1b5",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/theme.py": {
+      "export_sha256": "4bc0a7f9234cc597baea8fe0a89392abe4cc9883d72e37d98c5dfed8c34bd876",
+      "source_metadata": {
+        "sha256": "4bc0a7f9234cc597baea8fe0a89392abe4cc9883d72e37d98c5dfed8c34bd876",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/user_ui.py": {
+      "export_sha256": "33930a2843433147ed2c2afc350c1430624b82f1dc0008931fb3427068b499d7",
+      "source_metadata": {
+        "sha256": "33930a2843433147ed2c2afc350c1430624b82f1dc0008931fb3427068b499d7",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/sqlink/wifi_ui.py": {
+      "export_sha256": "c082462ab61a1a80134e6b9b5672dd004b4151e08d2bfde6ae7a088d62ea127d",
+      "source_metadata": {
+        "sha256": "c082462ab61a1a80134e6b9b5672dd004b4151e08d2bfde6ae7a088d62ea127d",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/systemd/system/svxlink.service": {
+      "export_sha256": "f771b9ba05b878d575a16139806c80a1cce2a8dfc727f05bfa3b0d8605561c14",
+      "source_metadata": {
+        "sha256": "f771b9ba05b878d575a16139806c80a1cce2a8dfc727f05bfa3b0d8605561c14",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/lib/systemd/system/svxlink_gpio_setup.service": {
+      "export_sha256": "1f7b135efb73abe6df3a1b7a5b5be646078dc0de2c194aa5515202c8a50c14b0",
+      "source_metadata": {
+        "sha256": "1f7b135efb73abe6df3a1b7a5b5be646078dc0de2c194aa5515202c8a50c14b0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/bin/sqlink-ptt-button.py": {
+      "export_sha256": "df3f2468fbab03863216a9f68372a5ab26315bce6455f7a0808939e58874cb83",
+      "source_metadata": {
+        "sha256": "df3f2468fbab03863216a9f68372a5ab26315bce6455f7a0808939e58874cb83",
+        "mode": "0o755",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/bin/sqlink-screen.py": {
+      "export_sha256": "58f4e5efe973b3b01229e96477348173367c1b0673db4b4f473a78e12add405d",
+      "source_metadata": {
+        "sha256": "58f4e5efe973b3b01229e96477348173367c1b0673db4b4f473a78e12add405d",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/sbin/sqlink-bluetooth-helper.py": {
+      "export_sha256": "3c0f0f64ca525c4a669acf589daae8e4e9723651acfed901a33fd1ddd0cfb45d",
+      "source_metadata": {
+        "sha256": "3c0f0f64ca525c4a669acf589daae8e4e9723651acfed901a33fd1ddd0cfb45d",
+        "mode": "0o755",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/sbin/sqlink-gpio-setup.sh": {
+      "export_sha256": "232b2826ce7e1d8e3001945a7ef67a7ff0b3b6309129015620f40ccbd017690a",
+      "source_metadata": {
+        "sha256": "232b2826ce7e1d8e3001945a7ef67a7ff0b3b6309129015620f40ccbd017690a",
+        "mode": "0o755",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/sbin/sqlink-wifi-helper.py": {
+      "export_sha256": "9bf87c1167b15308ef46b62fe5155522e7d48ded6a64e565d82aae7a0878fd4b",
+      "source_metadata": {
+        "sha256": "9bf87c1167b15308ef46b62fe5155522e7d48ded6a64e565d82aae7a0878fd4b",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/sbin/sqlink_user_config.py": {
+      "export_sha256": "1048f12bfaddde44912dbb518703654c73c8fbfbc05f6236ce61cf1d0c83a151",
+      "source_metadata": {
+        "sha256": "1048f12bfaddde44912dbb518703654c73c8fbfbc05f6236ce61cf1d0c83a151",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/local/sbin/sqlink_web_auth.py": {
+      "export_sha256": "fc4df8dc83e338d57af57be1c38196bb4d321ce1d4ca4d293695bace7946636d",
+      "source_metadata": {
+        "sha256": "fc4df8dc83e338d57af57be1c38196bb4d321ce1d4ca4d293695bace7946636d",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "usr/share/svxlink/events.d/local/RadioStatus.tcl": {
+      "export_sha256": "f84bf583239b42635c5f7d8d790a9106acb0e1d6a62dc49d1ba4b038ed1c7bf5",
+      "source_metadata": {
+        "sha256": "f84bf583239b42635c5f7d8d790a9106acb0e1d6a62dc49d1ba4b038ed1c7bf5",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0
+      }
+    }
+  }
+}

@@ -6,11 +6,17 @@
 
 [![Panel sterowania PiTALK PRO — przejdź do filmu](docs/images/control-panel.jpg)](Video/PiTalk-Pro-z-lektorem.mp4)
 
+## Zbuduj własne urządzenie
+
+To wspólne miejsce dla całego projektu: obudowy, elektroniki, kodu, konfiguracji i wiedzy potrzebnej do budowy. Zacznij od [dokumentacji](docs/README.md), [przewodnika budowy](docs/build/README.md), [listy części](docs/build/HARDWARE.md) i [statusu kompletności](docs/project/READINESS.md).
+
+**Stan: działający prototyp, odtwarzalność w przygotowaniu.** Instalacja od czystego systemu oraz rozruch obrazu alpha na nowej karcie wymagają jeszcze testów. Nie ma jeszcze zweryfikowanego obrazu publicznego wydania. [Jak uzupełniać projekt](CONTRIBUTING.md).
+
 ## O projekcie
 
 PiTALK PRO łączy Raspberry Pi 3 Model B, ekran Adafruit PiTFT 2,2″ i kartę dźwiękową USB Sabrent w obudowie inspirowanej klasycznymi radiotelefonami. Obok ekranu znajdują się cztery przyciski. Osobny front, wentylacja, ozdobne pokrętła i antena tworzą kompletny zestaw części do druku.
 
-Repozytorium zawiera obecnie **modele STL i film prezentacyjny**. Kod aplikacji, firmware i instrukcja instalacji oprogramowania nie są częścią tego wydania.
+Repozytorium zawiera **modele STL, materiały prezentacyjne i eksport kodu oprogramowania**. Dokumentacja do dalszej pracy znajduje się w [pakiecie przekazania](docs/handoff/START-HERE.md). Oprogramowanie i narzędzia obrazu są wersją rozwojową, jeszcze nie zatwierdzonym wydaniem firmware.
 
 Projekt był dopasowywany na podstawie kolejnych wydruków. Aktualny zestaw to **korpus V32, płaski front V38 i nakładki V11**. Ostateczne pasowanie zależy od konkretnej elektroniki i dokładności drukarki.
 
@@ -35,7 +41,7 @@ Projekt był dopasowywany na podstawie kolejnych wydruków. Aktualny zestaw to *
 - Karta audio USB Sabrent zgodna z prototypem, obudowa około **34 × 23 × 10 mm**.
 - Przycisk chwilowy typu PBS-110 o wymiarach zgodnych z prototypem.
 - Na dole: **2 śruby stożkowe M3×12** i **2 nakrętki M3 o wymiarach 5 mm między płaskimi bokami × 2 mm grubości**.
-- Cztery śruby stożkowe M3 mocujące część ekranową; długość należy dobrać do rzeczywistych dystansów ekranu.
+- Cztery śruby stożkowe M3×12 do LCD i cztery dystanse; długość dystansów wymaga uzupełnienia pomiarem.
 - Zewnętrzne zasilanie Raspberry Pi; projekt nie przewiduje wewnętrznego akumulatora.
 
 Przed zakupem zamienników sprawdź wymiary. Pokrętła i antena są **ozdobne**. Mocowania enkoderów EC11 i zewnętrzny układ PTT nie są częścią aktualnego zestawu.
@@ -44,16 +50,27 @@ Przed zakupem zamienników sprawdź wymiary. Pokrętła i antena są **ozdobne**
 
 Projekt rozwijano na Creality K1, korzystając z PLA i CR-PETG. Repozytorium nie zawiera gotowego profilu drukarki ani G-code.
 
-1. Sprawdź orientację i podpory w slicerze. Korpus drukuj dnem na stole. STL frontu V38 jest ustawiony płaską stroną przednią na stole — sprawdź podgląd pierwszej warstwy oraz fakturę płyty.
-2. Zwróć uwagę na podpory pod dachami kieszeni nakrętek, kołnierzami przycisków i ozdobnymi częściami. Najpierw wydrukuj jedną nakładkę i sprawdź jej ruch.
-3. Oczyść części i wykonaj przymiarkę bez kleju. Wsuń nakrętki przed elektroniką. Kieszenie mają 5,5 × 2,6 mm; ewentualny klej nie może dostać się do gwintu.
-4. Zamontuj boczny przycisk, Raspberry Pi, ekran z dystansami oraz kartę audio. Poprowadź przewody poza otworami i mocowaniami.
-5. Włóż cztery nakładki od środka frontu. Muszą poruszać się swobodnie i nie naciskać stale przycisków ekranu.
-6. Przyłóż front i delikatnie skręć obudowę. Dolne śruby to M3×12. Nie dociągaj na siłę i sprawdź, czy pozostałe śruby nie dochodzą do dna dystansów.
-7. Dopasuj i przyklej ozdobne pokrętła oraz antenę. Przed uruchomieniem sprawdź przewody, dostęp do złączy i działanie przycisków.
+Przed montażem oczyść wydruki i sprawdź pasowanie nakładek. Korpus drukuj dnem na stole; orientację frontu i podpory sprawdź w slicerze.
+
+**[Pełna instrukcja montażu ze zdjęciami](docs/build/ASSEMBLY.md)** — zaczynamy od frontu:
+
+1. Włóż cztery nakładki przycisków w sloty frontu.
+2. Umieść cztery śruby M3×12, przyłóż LCD i przykręć śruby.
+3. Przykręć cztery dystanse; odłóż gotowy front.
+4. Przylutuj do PTT dwa przewody po 10 cm i zaizoluj luty koszulkami termokurczliwymi.
+5. Zamontuj PTT w tylnej części obudowy i zabezpiecz go gorącym klejem.
+6. Odegnij do środka fizyczne piny 37 i 39 Raspberry Pi. Przylutuj przewody PTT i osłoń połączenia koszulkami, zgodnie z pełną instrukcją.
+7. Włóż opcjonalne dongle do dolnych portów USB, zanim umieścisz Pi w obudowie.
+8. Włóż Raspberry Pi, następnie dwie nakrętki M3 i kartę microSD.
+9. Zainstaluj kartę dźwiękową USB.
+10. Załóż gotowy front i dokręć dwie dolne śruby M3×12.
 
 Dno ma **40 szczelin 6,6 × 2,6 mm, R1**, w ośmiu rzędach po pięć. Korpus V32 ma wzmocnione mocowania nakrętek połączone ze ściankami. Nakładki V11 mają wysokość 3,5 mm i zaokrąglenie góry R0,6.
 
 ## Uwagi i zgłoszenia
 
 W [zgłoszeniu na GitHub](https://github.com/sasiela/pitalk-pro/issues) podaj wersję części, drukarkę, materiał, wysokość warstwy oraz zdjęcie lub pomiar problemu.
+
+## Kod i dokumentacja projektu
+
+Dodano aktualny eksport kodu i dokumentację do dalszej pracy w Cursorze: [Zacznij tutaj](docs/handoff/START-HERE.md), [oprogramowanie](software/README.md). To snapshot i eksperymentalne narzędzia obrazu, nie zatwierdzone wydanie firmware.

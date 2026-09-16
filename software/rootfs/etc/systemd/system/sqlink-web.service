@@ -1,0 +1,21 @@
+[Unit]
+Description=PiTalk Pro local web control
+After=network.target sqlink-wifi-helper.service sqlink-bluetooth-helper.service
+Wants=sqlink-wifi-helper.service sqlink-bluetooth-helper.service
+[Service]
+User=sqlink
+Group=sqlink
+SupplementaryGroups=audio gpio
+Environment=PYTHONPATH=/usr/lib
+Environment=XDG_RUNTIME_DIR=/run/user/1002
+ExecStart=/usr/bin/python3 /opt/sqlink-web/server.py
+WorkingDirectory=/opt/sqlink-web
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+[Install]
+WantedBy=multi-user.target

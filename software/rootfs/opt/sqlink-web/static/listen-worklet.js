@@ -1,0 +1,5 @@
+class ListenPCM extends AudioWorkletProcessor {
+ constructor(){super();this.ring=new Float32Array(16000);this.read=0;this.write=0;this.count=0;this.fraction=0;this.playing=false;this.port.onmessage=e=>{const samples=e.data;if(!(samples instanceof Float32Array))return;for(const value of samples){if(this.count===this.ring.length){this.read=(this.read+1)%this.ring.length;this.count--}this.ring[this.write]=value;this.write=(this.write+1)%this.ring.length;this.count++}if(this.count>8000){this.read=(this.write-3200+this.ring.length)%this.ring.length;this.count=3200;this.fraction=0}if(this.count>=1600)this.playing=true}}
+ process(inputs,outputs){const out=outputs[0][0];if(!out)return true;for(let i=0;i<out.length;i++){if(!this.playing||this.count<2){out[i]=0;this.playing=false;continue}const next=(this.read+1)%this.ring.length;out[i]=this.ring[this.read]*(1-this.fraction)+this.ring[next]*this.fraction;this.fraction+=16000/sampleRate;while(this.fraction>=1&&this.count){this.fraction--;this.read=(this.read+1)%this.ring.length;this.count--}}return true}
+}
+registerProcessor('listen-pcm',ListenPCM);

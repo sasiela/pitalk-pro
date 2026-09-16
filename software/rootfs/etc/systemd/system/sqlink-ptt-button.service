@@ -1,0 +1,26 @@
+[Unit]
+Description=SQLink hold-to-talk button on GPIO26
+Requires=sqlink-gpio.service
+After=sqlink-gpio.service svxlink.service
+Wants=svxlink.service
+
+[Service]
+Type=notify
+User=sqlink
+Group=sqlink
+SupplementaryGroups=gpio
+Environment=PYTHONPATH=/usr/lib
+RuntimeDirectory=sqlink-ptt
+RuntimeDirectoryMode=0750
+WorkingDirectory=/run/sqlink-ptt
+ExecStart=/usr/bin/python3 /usr/local/bin/sqlink-ptt-button.py
+ExecStopPost=/usr/bin/python3 /usr/local/bin/sqlink-ptt-button.py --release
+Restart=on-failure
+RestartSec=2
+WatchdogSec=3
+TimeoutStartSec=10
+TimeoutStopSec=3
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

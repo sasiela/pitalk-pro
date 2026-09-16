@@ -1,0 +1,19 @@
+item,quantity,reference,status
+Raspberry Pi,1,3 Model B Rev 1.2,prototype confirmed
+Display,1,Adafruit PiTFT 2.2 inch 240x320 HAT,prototype confirmed
+USB audio,1,Sabrent case approximately 34x23x10 mm,exact product identifier pending
+PTT button,1,PBS-110 style momentary,exact variant and contacts pending
+microSD,1,minimum 8 GB for alpha image,physical image boot pending
+Power supply and cable,1 set,external supply,exact model and load test pending
+Microphone and playback,1 audio path,USB audio or Bluetooth,models and wiring pending
+Lower screws,2,M3x12 countersunk,prototype mechanical reference
+Nuts,2,M3 5 mm across flats x 2 mm thick,prototype mechanical reference
+Display fasteners,4 screws + 4 spacers,M3x12 screws,screw length confirmed by author; spacer length pending
+Printed body,1,V32,STL available
+Printed front,1,V38,STL available
+Printed button caps,4,V11,STL available
+Decorative knobs,2,one of each model,STL available
+Decorative antenna base,1,matching model,STL available
+Decorative antenna,1,70 mm,STL available
+PTT wires,2,approximately 10 cm each,author assembly sequence; individual heat-shrink on joints
+Hot glue,as needed,PTT body retention,author assembly sequence

@@ -1,0 +1,26 @@
+[Unit]
+Description=SQLink PiTFT Display
+After=svxlink.service network.target user@1002.service
+Wants=svxlink.service user@1002.service
+
+[Service]
+Type=simple
+
+User=sqlink
+Group=sqlink
+SupplementaryGroups=video gpio audio
+
+Environment=XDG_RUNTIME_DIR=/run/user/1002
+Environment=PYTHONPATH=/usr/lib
+
+RuntimeDirectory=sqlink-ui
+RuntimeDirectoryMode=0750
+WorkingDirectory=/run/sqlink-ui
+
+ExecStart=/usr/bin/python3 /usr/local/bin/sqlink-screen.py
+
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
