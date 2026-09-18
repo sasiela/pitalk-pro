@@ -51,3 +51,7 @@ Talk groups pokazuje aktywność, wybraną TG i listy stacji. „Connected” oz
 Odsłuch: `/api/listen` → `listen_audio.py` → monitor bieżącego wyjścia PulseAudio (`<sink>.monitor`) → PCM s16le/16 kHz/mono → AudioWorklet przeglądarki. Maksymalnie cztery strumienie. Poza RX wysyłana jest cisza. Strumień nie zapisuje nagrania i nie zabiera dźwięku urządzeniu. Głośność przeglądarki jest osobna. Zmiana domyślnego wyjścia jest wykrywana podczas odsłuchu. Zamknięcie Overview, Stop lub wylogowanie zatrzymuje odsłuch.
 
 Pułapka: `ProtectHome=yes` w usłudze ukrywa `/run/user`. Działający prototyp używa bind mount socketu PulseAudio do `/run/sqlink-web-audio` i zmiennej `PULSE_SERVER`. Obraz alpha ma inny wariant: bind całego runtime użytkownika z zależnością od `user@1002.service`. Nie mieszaj tych wariantów bez sprawdzenia startu usług.
+
+## Testy audio WWW
+
+`audio_test.py` obsługuje jedno ograniczone czasowo zadanie należące do sesji. Paplay odtwarza wygenerowany ton, parec odczytuje domyślny mikrofon i oblicza poziom bez zapisu nagrania. GET/POST `/api/audio-test`; frontend odpytuje stan co 250 ms. Test nie steruje GPIO; odczytuje stan radia i przerywa przy RX/PTT. [Instrukcja i sprawdzenia](../build/AUDIO-TESTS.md).

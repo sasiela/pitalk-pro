@@ -5,6 +5,7 @@ import json,os,pathlib,ssl,time,secrets,hashlib,hmac,threading,socket,subprocess
 from http.server import ThreadingHTTPServer,BaseHTTPRequestHandler
 from sqlink import reflector,api,gpio
 import listen_audio
+import audio_test
 ROOT=pathlib.Path(__file__).parent/'static'
 SESSIONS={};FAILURES={};LOCK=threading.Lock();MUTATE=threading.Lock()
 def bridge(kind,payload):
@@ -119,7 +120,7 @@ class Handler(BaseHTTPRequestHandler):
    if path=='/api/listen':
     if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session[1]['csrf']):return self.reply(403,dict(ok=False,message='Reload the page before listening.'))
     return listen_audio.stream(self)
-   routes={'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
+   routes={'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
    if path not in routes:return self.reply(404,{'ok':False})
    self.reply(200,dict(ok=True,data=routes[path]()))
   except (BrokenPipeError,ConnectionResetError):pass
@@ -157,8 +158,15 @@ class Handler(BaseHTTPRequestHandler):
    if not session:return self.reply(401,dict(ok=False,message='Please sign in.'))
    if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session[1]['csrf']):return self.reply(403,dict(ok=False,message='Session validation failed. Reload the page.'))
    if path=='/api/logout':
+    audio_test.stop(session[0])
     with LOCK:SESSIONS.pop(session[0],None)
     return self.reply(200,dict(ok=True),'session=; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=0')
+   if path=='/api/audio-test':
+    if p.get('action')=='start':result=audio_test.start(session[0],p.get('mode'))
+    elif p.get('action')=='stop':
+     audio_test.stop(session[0],p.get('id'));result=audio_test.snapshot(session[0])
+    else:raise ValueError('Unsupported audio test action.')
+    return self.reply(200,dict(ok=True,data=result))
    # Pairing confirmations must remain available while a Pair request waits.
    if path=='/api/bt' and p.get('action') in ('answer','cancel_pair'):
     return self.reply(200,bridge('bt',p))

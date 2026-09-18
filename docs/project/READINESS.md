@@ -32,3 +32,7 @@ Nowa osoba potrafi dobrać części, wykonać połączenia, złożyć obudowę, 
 ## Zasada utrzymania
 
 Przy zmianie sprzętu aktualizujemy listę części i schemat. Przy zmianie funkcji — instrukcję oraz test. Przy zmianie instalacji — receptę budowy i odtworzenia. Przy wydaniu — raport zgodnej konfiguracji i sumy artefaktów. Prywatne dane użytkowników nie są częścią projektu.
+
+## Aktualizacja — testy audio WWW, 17 września 2026
+
+Dodano test wyjścia oraz miernik mikrofonu. Testy logiki/API i symulacja UI przeszły; na prototypie zweryfikowano procesy USB. Słyszalność, reakcja na mowę i zestaw Bluetooth wymagają potwierdzenia użytkownika. [Zakres i instrukcja](../build/AUDIO-TESTS.md). Obraz alpha-1 bez tej zmiany.

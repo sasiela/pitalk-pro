@@ -6,7 +6,7 @@ count=0
 for p in base.rglob('*.py'):
     compile(p.read_bytes(),str(p),'exec');count+=1
 for p in (base/'rootfs').rglob('*'):
-    if not p.is_file():continue
+    if not p.is_file() or p.name == '.DS_Store' or '__pycache__' in p.parts or p.suffix in ('.pyc','.pyo'):continue
     text=p.read_text()
     if re.search(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',text):raise SystemExit(f'Private key found: {p}')
     if re.search(r'^\s*(?:AUTH_KEY|PSK)\s*=\s*["\']?[^\s"\']',text,re.M):raise SystemExit(f'Credential-like assignment: {p}')

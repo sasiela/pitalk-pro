@@ -44,3 +44,11 @@ Test PTT bez nadawania musi być zorganizowany tak, aby drugi proces nie urucham
 - Błędy i sposób odtworzenia:
 - Niesprawdzone:
 - Czy druga osoba odtworzyła urządzenie bez prywatnej pomocy autora:
+
+## Panel Audio diagnostics
+
+Według [instrukcji](../build/AUDIO-TESTS.md) sprawdź na USB i BT: słyszalny ton 2 s, miernik reagujący na mowę przez 8 s, Stop, automatyczne zakończenie, opuszczenie strony, blokadę podczas RX/PTT, wyciszony/brakujący sprzęt i zmianę routingu. Potwierdź, że lokalne audio SvxLink działa po teście i nie została zmieniona głośność. Nie używaj rzeczywistej transmisji jako automatycznego testu.
+
+## Dopasowanie wejścia Bluetooth — poprawka 17 września 2026
+
+PipeWire może nazwać wyjście `bluez_output.AA_BB_CC_DD_EE_FF.1`, a wejście `bluez_input.AA:BB:CC:DD:EE:FF`. Poprzedni wybór transportu oczekiwał podkreśleń i dodatkowego sufiksu także dla wejścia. Teraz dopasowuje znormalizowany adres urządzenia. Trzy testy regresji obejmują obie postacie BT i USB: `python3 software/tests/test_bt_pair.py`. Po zmianie sprawdź zarówno domyślne wejście, jak i źródło istniejącego strumienia SvxLink.

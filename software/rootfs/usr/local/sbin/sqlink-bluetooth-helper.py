@@ -118,7 +118,13 @@ def select_transport(transport):
         for sink in st['sinks']:
             if not sink['name'].startswith(prefix):continue
             key=sink['name'][len(prefix):].split('.')[0]
-            source=next((n for n in st['sources'] if n['name'].startswith(source_prefix+key+'.')),None)
+            if transport=='bluetooth':
+                # PipeWire may name the sink with underscores and the source with colons.
+                key=key.replace('_',':').upper()
+                source=next((n for n in st['sources'] if n['name'].startswith(source_prefix)
+                    and n['name'][len(source_prefix):].split('.')[0].replace('_',':').upper()==key),None)
+            else:
+                source=next((n for n in st['sources'] if n['name'].startswith(source_prefix+key+'.')),None)
             if source:return sink['name'],source['name']
         return None
     try:

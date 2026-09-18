@@ -44,3 +44,7 @@ Potrzebny jest sprawdzony proces obejmujący:
 ## Gdy pojawi się problem
 
 Nie zaczynaj od ponownego wgrywania systemu. Rozdziel diagnostykę: zasilanie/rozruch, ekran, sieć lokalna, usługi, logowanie do reflektora, wejście/wyjście audio. OFFLINE przy działającym panelu może oznaczać problem połączenia SvxLink, a nie brak Wi-Fi. Opisz objaw i etap testu zgodnie z [CONTRIBUTING.md](../../CONTRIBUTING.md).
+
+## Diagnostyka audio w panelu
+
+Instrukcja i zależności: [test głośnika i mikrofonu](AUDIO-TESTS.md). Funkcja dodana po przygotowaniu obrazu alpha-1.

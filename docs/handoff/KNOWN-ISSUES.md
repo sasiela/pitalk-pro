@@ -36,3 +36,7 @@ Przed publicznym wydaniem pozostają: instalator/powtarzalny build, pełne testy
 3. Uporządkowany instalator i testy najważniejszych stanów PTT/TG/audio.
 4. Diagnostyka heartbeat oparta na dłuższej obserwacji, jeżeli problem powróci.
 5. Przygotowanie wersji do dystrybucji po testach i przeglądzie materiałów.
+
+## Dopasowanie wejścia Bluetooth — poprawka 17 września 2026
+
+PipeWire może nazwać wyjście `bluez_output.AA_BB_CC_DD_EE_FF.1`, a wejście `bluez_input.AA:BB:CC:DD:EE:FF`. Poprzedni wybór transportu oczekiwał podkreśleń i dodatkowego sufiksu także dla wejścia. Teraz dopasowuje znormalizowany adres urządzenia. Trzy testy regresji obejmują obie postacie BT i USB: `python3 software/tests/test_bt_pair.py`. Po zmianie sprawdź zarówno domyślne wejście, jak i źródło istniejącego strumienia SvxLink.
