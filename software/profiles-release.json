@@ -10,9 +10,9 @@
     "usr/lib/sqlink/controller.py": "7b5f87d4e4cf7519ce2e2111e89f8b05dd9791b65d147730a93cefa972916d97",
     "usr/lib/sqlink/api.py": "d2650badf0935573b8c3cb28f41e7ed8ff922e4867591fc6a3f8d589e4aaa281",
     "usr/lib/sqlink/profile_state.py": "71ef7e0de3321af2fc50c0eb6f812dfa445cb1b28d17f054014cf4f9c81d3558",
-    "usr/local/bin/sqlink-screen.py": "8a356d316a6f0850f3ca3ff7c5441d55241466e7918833a47c993933d100cd03",
+    "usr/local/bin/sqlink-screen.py": "382abd067ced368a181513396a81eb5ef08403f3365ffd632c10ba480e50447b",
     "usr/local/sbin/sqlink-wifi-helper.py": "6f2a3fc5a0c71507e204ee8cc02800605b948fdb17b4069121203b362634dd6f",
     "usr/local/sbin/sqlink_profiles.py": "274f8e782f6513986f57c050d371c82d4a1beadb3b2eb632f4f042fc11154d0d"
   },
-  "notes": "Hashes describe sanitized repository files. Original snapshot manifest is retained as provenance. The alpha-1 image has not been rebuilt. Footer refinement: active profile beside the clock, with width-aware ellipsis."
+  "notes": "Hashes describe sanitized repository files. Original snapshot manifest is retained as provenance. The alpha-1 image has not been rebuilt. Header refinement: active profile centered below the callsign, with width-aware ellipsis."
 }

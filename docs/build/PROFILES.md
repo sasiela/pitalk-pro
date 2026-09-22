@@ -18,7 +18,7 @@ Migracja importuje aktualną konfigurację do profilu **SQLink**, ustawia go jak
 
 **Station directory** określa źródło nazw TG i informacji o stacjach. **SQLink API** korzysta z istniejącego API SQLink. **None — local TG numbers** pokazuje lokalnie skonfigurowane TG i nie pobiera danych SQLink. Fala domyślnie używa None; jej API wymaga osobnej integracji po udostępnieniu. W panelu można wpisać dowolny numer TG. Na PiTFT lista pochodzi z domyślnej i monitorowanych TG; przy pustej liście pozostaje pozycja Monitor (TG 0).
 
-Nazwa faktycznie zastosowanego profilu jest widoczna na dole ekranu głównego, między ikoną menu a godziną, oraz w nagłówku WWW. Długie nazwy są skracane wielokropkiem do dostępnej szerokości. Wybranie pozycji do edycji nie zmienia aktywnego profilu.
+Nazwa faktycznie zastosowanego profilu jest widoczna w nagłówku ekranu głównego, wyśrodkowana pod znakiem wywoławczym, oraz w nagłówku WWW. Długie nazwy są skracane wielokropkiem do dostępnej szerokości. Wybranie pozycji do edycji nie zmienia aktywnego profilu.
 
 ## Pliki i uprawnienia
 

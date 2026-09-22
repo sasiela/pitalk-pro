@@ -2,6 +2,12 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-22 — Czytelniejszy nagłówek profilu
+
+- Po ocenie układu stopki przeniesiono profil pod znak wywoławczy, ponad górną linię.
+- Nazwa jest wyśrodkowana, ma większą czcionkę i korzysta z szerokości nagłówka; długie nazwy zachowują wielokropek.
+- Stopka zawiera ponownie ikonę menu i zegar. Sprawdzono podgląd krótkiej i długiej nazwy; wdrożono po kopii skryptu.
+
 ## 2026-09-22 — Nazwa profilu obok zegara
 
 - Przeniesiono aktywny profil z górnej części ekranu na dół, między ikonę menu a godzinę.

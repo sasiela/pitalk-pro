@@ -464,14 +464,21 @@ def draw_main():
     img = Image.new("RGB", (WIDTH, HEIGHT), theme.BG)
     d = MenuDraw(img)
 
-    # Callsign; the active profile is displayed beside the clock.
+    # Station identity: callsign above the active reflector profile.
     d.text(
-        (WIDTH // 2, 36),
+        (WIDTH // 2, 23),
         callsign,
         font=FONT_CALL,
         fill="white",
         anchor="mm",
     )
+
+    profile_name = str(profile_state.current().get("name", ""))
+    if d.textlength(profile_name, font=FONT_SMALL) > WIDTH - 24:
+        while profile_name and d.textlength(profile_name + "…", font=FONT_SMALL) > WIDTH - 24:
+            profile_name = profile_name[:-1]
+        profile_name = profile_name + "…" if profile_name else ""
+    d.text((WIDTH // 2, 45), profile_name, font=FONT_SMALL, fill=theme.ACCENT, anchor="mm")
 
     d.line(
         (12, 58, WIDTH - 12, 58),
@@ -550,15 +557,6 @@ def draw_main():
     else:
 
         clock_text = now.strftime("%H:%M:%S")
-        # Keep clear of both the menu icon and the right-aligned clock.
-        profile_name = str(profile_state.current().get("name", ""))
-        profile_x = 58
-        available = max(0, WIDTH - 12 - d.textlength(clock_text, font=FONT_SMALL) - 8 - profile_x)
-        if d.textlength(profile_name, font=FONT_TINY) > available:
-            while profile_name and d.textlength(profile_name + "…", font=FONT_TINY) > available:
-                profile_name = profile_name[:-1]
-            profile_name = profile_name + "…" if profile_name else ""
-        d.text((profile_x, 288), profile_name, font=FONT_TINY, fill=theme.ACCENT, anchor="la")
         d.text(
             (WIDTH - 12, 286),
             clock_text,
