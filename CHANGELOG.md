@@ -2,6 +2,12 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-22 — Nazwa profilu obok zegara
+
+- Przeniesiono aktywny profil z górnej części ekranu na dół, między ikonę menu a godzinę.
+- Dostępna szerokość uwzględnia zegar; długie nazwy kończą się wielokropkiem.
+- Sprawdzono renderowanie krótkiej i długiej nazwy. Przed wdrożeniem zapisano kopię skryptu; restart obejmuje tylko ekran.
+
 ## 2026-09-22 — Profile reflektorów
 
 ### Funkcje
