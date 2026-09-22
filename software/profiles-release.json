@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-22",
+  "feature": "Reflector profiles",
+  "base_manifest": "manifest.json",
+  "files": {
+    "opt/sqlink-web/server.py": "12fa47742352e4cc79349a5000f09e1d9f99e33abf7407aaa53cbe5a6d2d864d",
+    "opt/sqlink-web/static/app.js": "025b7a85c1ba8173adf70ed8f266110eb21701eceeebaa826f60131fcdeada8d",
+    "etc/systemd/system/sqlink-profiles.service": "db0b5246943d47fbfef5367ef2106a99b33df547b7fd7e7e0dca492596dd681c",
+    "usr/lib/sqlink/user_ui.py": "d4f156c769fb7810c1afefc0efff14ed80aa79ff53826b2def40ef854fe0c374",
+    "usr/lib/sqlink/controller.py": "7b5f87d4e4cf7519ce2e2111e89f8b05dd9791b65d147730a93cefa972916d97",
+    "usr/lib/sqlink/api.py": "d2650badf0935573b8c3cb28f41e7ed8ff922e4867591fc6a3f8d589e4aaa281",
+    "usr/lib/sqlink/profile_state.py": "71ef7e0de3321af2fc50c0eb6f812dfa445cb1b28d17f054014cf4f9c81d3558",
+    "usr/local/bin/sqlink-screen.py": "a4eac4effcd11ed548a7d0106b0801ff9cc8c160f2f767188b5d7734b245b7d0",
+    "usr/local/sbin/sqlink-wifi-helper.py": "6f2a3fc5a0c71507e204ee8cc02800605b948fdb17b4069121203b362634dd6f",
+    "usr/local/sbin/sqlink_profiles.py": "274f8e782f6513986f57c050d371c82d4a1beadb3b2eb632f4f042fc11154d0d"
+  },
+  "notes": "Hashes describe sanitized repository files. Original snapshot manifest is retained as provenance. The alpha-1 image has not been rebuilt."
+}

@@ -1,3 +1,4 @@
+from . import profile_state
 import json
 import time
 import urllib.request
@@ -42,7 +43,20 @@ def _get_json(url, timeout=5):
     return json.loads(raw)
 
 
+_profile_key = None
+def ensure_profile():
+    global _profile_key, _status_cache, _tg_cache, _status_cache_time, _tg_cache_time
+    key = profile_state.key()
+    if key != _profile_key:
+        _profile_key = key
+        _status_cache = _tg_cache = None
+        _status_cache_time = _tg_cache_time = 0
+    return profile_state.current()
+
 def get_status(timeout=5, force=False):
+    if ensure_profile().get('directory') != 'sqlink':
+        return {'statusNodes': {}, 'active_tg': [], 'qso': []}
+
     global _status_cache
     global _status_cache_time
 
@@ -91,6 +105,9 @@ def get_status(timeout=5, force=False):
 
 
 def get_talkgroups(timeout=5, force=False):
+    if ensure_profile().get('directory') != 'sqlink':
+        return profile_state.local_groups()
+
     global _tg_cache
     global _tg_cache_time
 

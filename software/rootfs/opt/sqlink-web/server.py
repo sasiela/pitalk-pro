@@ -3,7 +3,7 @@
 import ipaddress
 import json,os,pathlib,ssl,time,secrets,hashlib,hmac,threading,socket,subprocess,http.cookies,urllib.parse
 from http.server import ThreadingHTTPServer,BaseHTTPRequestHandler
-from sqlink import reflector,api,gpio
+from sqlink import reflector,api,gpio,profile_state
 import listen_audio
 import audio_test
 ROOT=pathlib.Path(__file__).parent/'static'
@@ -26,7 +26,7 @@ def state():
   elif len(parts)>3:talker=parts[3].strip()
  except (OSError,ValueError):pass
  mode='TX' if ptt else 'OFFLINE' if not online else 'RX' if rx else 'MONITOR' if tg==0 else 'IDLE'
- return dict(online=online,mode=mode,tg=tg,talker=talker if mode=='RX' else '',callsign=reflector.get_callsign(),uptime=int(float(pathlib.Path('/proc/uptime').read_text().split()[0])),load=os.getloadavg()[0])
+ return dict(profile=profile_state.current().get("name", "Unknown"),online=online,mode=mode,tg=tg,talker=talker if mode=='RX' else '',callsign=reflector.get_callsign(),uptime=int(float(pathlib.Path('/proc/uptime').read_text().split()[0])),load=os.getloadavg()[0])
 def diagnostics():
  units=['svxlink','sqlink-screen','sqlink-ptt-button','sqlink-bluetooth-helper','sqlink-wifi-helper','sqlink-web']
  services={}
@@ -41,6 +41,7 @@ ACTIVITY_NODES = {}
 ACTIVITY_CACHE = None
 ACTIVITY_TIME = 0
 ACTIVITY_LOCK = threading.Lock()
+ACTIVITY_PROFILE = None
 def normalize_activity(data):
  nodes=data.get('statusNodes')
  if not isinstance(nodes,dict):raise ValueError('No station status available')
@@ -64,8 +65,13 @@ def normalize_activity(data):
   for k in ('connected','monitoring','talkers'):g[k].sort()
  return dict(groups=sorted(result.values(),key=lambda g:(not bool(g['talkers']),-len(g['connected']),g['tg'])),idle=sorted(idle),stations=visible,updated_at=time.time(),stale=False)
 def activity():
- global ACTIVITY_CACHE,ACTIVITY_TIME,ACTIVITY_NODES
+ global ACTIVITY_CACHE,ACTIVITY_TIME,ACTIVITY_NODES,ACTIVITY_PROFILE
  with ACTIVITY_LOCK:
+  key=profile_state.key()
+  if ACTIVITY_PROFILE!=key:
+   ACTIVITY_CACHE=None;ACTIVITY_NODES={};ACTIVITY_TIME=0;ACTIVITY_PROFILE=key
+  if profile_state.current().get('directory')!='sqlink':
+   return dict(groups=[],idle=[],stations=0,updated_at=time.time(),stale=False,available=False,message='Station directory is not configured for this profile.')
   if ACTIVITY_CACHE is not None and time.monotonic()-ACTIVITY_TIME<5:return ACTIVITY_CACHE
   try:
    data=api._get_json(api.STATUS_URL,timeout=5)
@@ -120,7 +126,7 @@ class Handler(BaseHTTPRequestHandler):
    if path=='/api/listen':
     if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session[1]['csrf']):return self.reply(403,dict(ok=False,message='Reload the page before listening.'))
     return listen_audio.stream(self)
-   routes={'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
+   routes={'/api/profiles':lambda:bridge('wifi',{'action':'profiles_snapshot'}),'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
    if path not in routes:return self.reply(404,{'ok':False})
    self.reply(200,dict(ok=True,data=routes[path]()))
   except (BrokenPipeError,ConnectionResetError):pass
@@ -181,6 +187,9 @@ class Handler(BaseHTTPRequestHandler):
      result=bridge('bt',p)
     elif path=='/api/wifi':
      if p.get('action') not in ('scan','connect','set_default'):raise ValueError('Unsupported Wi-Fi action.')
+     result=bridge('wifi',p)
+    elif path=='/api/profiles':
+     if p.get('action') not in ('profiles_save','profiles_activate','profiles_default','profiles_delete'):raise ValueError('Unsupported profile action.')
      result=bridge('wifi',p)
     elif path=='/api/user':
      p['action']='user_save';result=bridge('wifi',p)

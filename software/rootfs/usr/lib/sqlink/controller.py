@@ -1,4 +1,5 @@
 from . import api
+from . import profile_state
 from . import audio
 from . import bluetooth
 from . import gpio
@@ -101,7 +102,7 @@ class SQLinkController:
 
         result = {
             "connected": reflector.is_connected(log),
-            "server": "sqlink.pl",
+            "server": profile_state.current().get("host", ""),
             "stations_count": None,
             "uptime": None,
         }

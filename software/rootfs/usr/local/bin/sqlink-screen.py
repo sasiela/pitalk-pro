@@ -21,6 +21,7 @@ from sqlink.bluetooth_ui import BluetoothMenu
 bluetooth_menu = BluetoothMenu()
 from sqlink.audio_ui import AudioMenu
 audio_menu = AudioMenu()
+from sqlink import profile_state
 from sqlink.user_ui import UserMenu
 user_menu = UserMenu()
 
@@ -311,6 +312,10 @@ def extract_tgs(obj):
 def load_tg_list():
     global last_tg_refresh
 
+    if profile_state.current().get("directory") != "sqlink":
+        last_tg_refresh = time.monotonic()
+        return [(str(g["id"]),g["name"]) for g in profile_state.local_groups()] or [("0", "Monitor")]
+
     try:
         data = controller.talkgroups()
 
@@ -349,7 +354,7 @@ def load_tg_list():
 
     last_tg_refresh = time.monotonic()
 
-    return list(FALLBACK_TG_LIST)
+    return list(FALLBACK_TG_LIST) if profile_state.current().get("directory")=="sqlink" else [(str(g["id"]),g["name"]) for g in profile_state.local_groups()]
 
 
 
@@ -358,6 +363,10 @@ def refresh_tg_list_if_needed():
     global TG_LIST
     global tg_index
     global last_tg_refresh
+
+    if profile_state.current().get("directory") != "sqlink":
+        last_tg_refresh = time.monotonic()
+        return [(str(g["id"]),g["name"]) for g in profile_state.local_groups()] or [("0", "Monitor")]
 
     now = time.monotonic()
 
@@ -455,9 +464,10 @@ def draw_main():
     img = Image.new("RGB", (WIDTH, HEIGHT), theme.BG)
     d = MenuDraw(img)
 
-    # Callsign - top, no large SQLink header.
+    d.text((WIDTH // 2, 11), str(profile_state.current().get("name", ""))[:28], font=FONT_TINY, fill=theme.ACCENT, anchor="mm")
+    # Callsign and active profile.
     d.text(
-        (WIDTH // 2, 34),
+        (WIDTH // 2, 36),
         callsign,
         font=FONT_CALL,
         fill="white",
@@ -678,7 +688,7 @@ def draw_network():
             str(
                 data.get(
                     "server",
-                    "sqlink.pl",
+                    profile_state.current().get("host", ""),
                 )
             ),
         ),
@@ -1869,12 +1879,20 @@ for pin in BUTTONS:
     button_time[pin] = 0.0
 
 last_redraw = 0.0
+last_profile_key = profile_state.key()
+profile_checked = 0.0
 
 try:
     redraw()
 
     while True:
         now = time.monotonic()
+        if now-profile_checked >= 1:
+            profile_checked=now
+            key=profile_state.key()
+            if key!=last_profile_key:
+                last_profile_key=key;TG_LIST=load_tg_list();tg_index=0;_main_state_time=0
+                redraw()
 
         if user_menu.poll() and submenu == "User":
             redraw()

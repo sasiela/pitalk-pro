@@ -1,0 +1,13 @@
+[Unit]
+Description=PiTalk Pro default reflector profile
+Before=svxlink.service sqlink-screen.service sqlink-web.service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/sbin/sqlink_profiles.py --boot
+RemainAfterExit=yes
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

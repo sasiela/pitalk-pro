@@ -2,7 +2,7 @@ import http.client,json,pathlib,sys,threading,time,types,unittest
 sys.dont_write_bytecode = True
 from unittest.mock import patch
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/'rootfs/opt/sqlink-web'))
-sys.modules['sqlink']=types.SimpleNamespace(reflector=types.SimpleNamespace(),api=types.SimpleNamespace(get_talkgroups=lambda:[]),gpio=types.SimpleNamespace())
+sys.modules['sqlink']=types.SimpleNamespace(reflector=types.SimpleNamespace(),api=types.SimpleNamespace(get_talkgroups=lambda:[]),gpio=types.SimpleNamespace(),profile_state=types.SimpleNamespace(current=lambda:{},key=lambda:"test"))
 import server
 class H(server.Handler):
  def local_access(self):return True

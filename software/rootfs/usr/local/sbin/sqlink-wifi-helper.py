@@ -198,7 +198,12 @@ def dispatch(request):
     if action == 'web_auth':
         from sqlink_web_auth import authenticate
         return dict(ok=True, authenticated=authenticate(request.get('username'), request.get('password')))
-    if action in ('user_snapshot', 'user_save'):
+    if action in ('profiles_snapshot','profiles_save','profiles_activate','profiles_default','profiles_delete'):
+        import sqlink_profiles
+        return sqlink_profiles.dispatch(request)
+    if action == 'user_save':
+        return dict(ok=False,message='Reload the panel and use Profiles to edit connection settings.')
+    if action in ('user_snapshot',):
         import sqlink_user_config
         return sqlink_user_config.dispatch(request)
     if action == 'restart_device':
