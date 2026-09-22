@@ -52,3 +52,7 @@ Według [instrukcji](../build/AUDIO-TESTS.md) sprawdź na USB i BT: słyszalny t
 ## Dopasowanie wejścia Bluetooth — poprawka 17 września 2026
 
 PipeWire może nazwać wyjście `bluez_output.AA_BB_CC_DD_EE_FF.1`, a wejście `bluez_input.AA:BB:CC:DD:EE:FF`. Poprzedni wybór transportu oczekiwał podkreśleń i dodatkowego sufiksu także dla wejścia. Teraz dopasowuje znormalizowany adres urządzenia. Trzy testy regresji obejmują obie postacie BT i USB: `python3 software/tests/test_bt_pair.py`. Po zmianie sprawdź zarówno domyślne wejście, jak i źródło istniejącego strumienia SvxLink.
+
+## Profile reflektorów
+
+Według [instrukcji](../build/PROFILES.md) sprawdź tworzenie/edycję/usuwanie w obu interfejsach, maskowanie hasła, konflikt rewizji przy równoległej edycji, aktywację poprawnego konta, odtworzenie po błędnym koncie, blokadę PTT/RX oraz domyślny profil po restarcie. Potwierdź brak danych SQLink w Fali, zachowanie USB/BT i Wi-Fi oraz nazwę aktywnego profilu na ekranie. Pełny test Fali wymaga gotowego serwera i osobnego konta.

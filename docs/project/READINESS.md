@@ -36,3 +36,7 @@ Przy zmianie sprzętu aktualizujemy listę części i schemat. Przy zmianie funk
 ## Aktualizacja — testy audio WWW, 17 września 2026
 
 Dodano test wyjścia oraz miernik mikrofonu. Testy logiki/API i symulacja UI przeszły; na prototypie zweryfikowano procesy USB. Słyszalność, reakcja na mowę i zestaw Bluetooth wymagają potwierdzenia użytkownika. [Zakres i instrukcja](../build/AUDIO-TESTS.md). Obraz alpha-1 bez tej zmiany.
+
+## Aktualizacja — profile, 22 września 2026
+
+Wdrożono wspólne profile reflektorów w menu i WWW, aktywację z przywracaniem konfiguracji oraz wybór domyślnego profilu na rozruch. Import i zapis sprawdzono na prototypie; w końcowej kontroli Fala była już aktywna i połączona. Audio/TG Fali, powrót do SQLink i restart z drugim profilem pozostają do testu. [Instrukcja, wyniki i ograniczenia](../build/PROFILES.md). Obraz alpha-1 bez tej aktualizacji.

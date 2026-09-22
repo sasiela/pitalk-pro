@@ -48,3 +48,7 @@ Nie zaczynaj od ponownego wgrywania systemu. Rozdziel diagnostykę: zasilanie/ro
 ## Diagnostyka audio w panelu
 
 Instrukcja i zależności: [test głośnika i mikrofonu](AUDIO-TESTS.md). Funkcja dodana po przygotowaniu obrazu alpha-1.
+
+## Profile reflektorów
+
+[Profile SQLink, Fala i własne serwery](PROFILES.md): menu i WWW, zapis haseł, aktywacja, profil domyślny, instalacja i ograniczenia. Aktualizacja z 22 września 2026, poza obrazem alpha-1.

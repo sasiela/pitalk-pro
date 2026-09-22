@@ -20,3 +20,7 @@ Celem repozytorium jest umożliwienie innej osobie zbudowania, skonfigurowania i
 - [Obraz i backupy](handoff/IMAGE-AND-BACKUPS.md), [status przygotowania wydania](project/READINESS.md).
 
 Materiały w `docs/handoff/` zachowują kontekst rozwoju. Niniejszy katalog jest punktem wejścia dla wszystkich budujących, niezależnie od używanego edytora lub asystenta.
+
+## Profile połączenia
+
+[Konfiguracja i obsługa profili SQLink / Fala](build/PROFILES.md) — wspólne dla ekranu i panelu WWW.

@@ -55,3 +55,7 @@ Pułapka: `ProtectHome=yes` w usłudze ukrywa `/run/user`. Działający prototyp
 ## Testy audio WWW
 
 `audio_test.py` obsługuje jedno ograniczone czasowo zadanie należące do sesji. Paplay odtwarza wygenerowany ton, parec odczytuje domyślny mikrofon i oblicza poziom bez zapisu nagrania. GET/POST `/api/audio-test`; frontend odpytuje stan co 250 ms. Test nie steruje GPIO; odczytuje stan radia i przerywa przy RX/PTT. [Instrukcja i sprawdzenia](../build/AUDIO-TESTS.md).
+
+## Profile reflektorów (22 września 2026)
+
+`sqlink_profiles.py` zastępuje bezpośrednią edycję konta w User. Root przechowuje bazę prywatną i publikuje metadane aktywnego profilu do `profile_state.py`. UI PiTFT i `/api/profiles` korzystają ze wspólnego helpera. API nazw i stacji jest ograniczone do dostawcy danego profilu; None nie odpytuje SQLink. Usługa `sqlink-profiles.service` przygotowuje konfigurację domyślnego profilu na rozruch. [Pełny opis](../build/PROFILES.md).

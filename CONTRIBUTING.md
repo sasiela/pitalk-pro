@@ -23,3 +23,9 @@ Wiedza wspólna trafia do `docs/`, kod do `software/`, geometria do `stl/`. Hist
 Teksty interfejsu pozostają po angielsku. Instrukcje dla użytkowników powinny mieć prosty język i czytelne oznaczenie testów. Dokumentacja techniczna może być rozwijana równolegle po polsku i angielsku; tłumaczenia muszą odzwierciedlać tę samą wersję.
 
 Licencje całego zestawu nie zostały jeszcze ustalone. Zachowuj istniejące nagłówki i pochodzenie plików; nie dodawaj w imieniu autorów niewybranej licencji.
+
+## Historia Git i publikacja zmian
+
+Każda zmiana powinna mieć konkretny temat commita oraz opis problemu, nowego zachowania i sprawdzeń. Oddzielaj niezależne funkcje; razem z kodem zapisuj odpowiednie testy. Rozbudowaną instrukcję i historię zmian można umieścić w osobnym commicie dokumentacyjnym.
+
+Dla zmian użytkowych aktualizuj `CHANGELOG.md`, instrukcję funkcji oraz zakres pozostałych testów. Przed push sprawdź diff, zgodność z gałęzią zdalną i listę plików. Nie dołączaj prywatnej konfiguracji, haseł, kluczy, backupów ani danych z działającego urządzenia. Nie używaj force push do zwykłych aktualizacji. Po push potwierdź zgodność lokalnej i zdalnej rewizji.

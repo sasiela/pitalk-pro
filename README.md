@@ -3,6 +3,7 @@
 **A Raspberry Pi radio terminal project with a custom, 3D-printable handheld enclosure.**
 
 [Polski](README.pl.md) · [Printable parts](#printable-parts) · [Hardware](#hardware) · [Assembly](#assembly) · [Watch the demo](Video/PiTalk-Pro-z-lektorem.mp4)
+[Changelog](CHANGELOG.md) · [Profiles / Profile](docs/build/PROFILES.md)
 
 [![PiTALK PRO control panel — open the demonstration video](docs/images/control-panel.jpg)](Video/PiTalk-Pro-z-lektorem.mp4)
 

@@ -39,3 +39,7 @@ Nie pobrano kont, haseł, tokenu PulseAudio, kluczy SSH/HTTPS, parowań BT, zapi
 ## Wiadomość startowa do Cursora
 
 > Przeczytaj AGENTS.md i dokumentację docs/handoff. Poznaj aktualny kod software/rootfs oraz manifest eksportu. Odróżnij działający prototyp od obrazu alpha i przykładów konfiguracji. Sprawdź stan repozytorium, podsumuj architekturę i ograniczenia. Nie wdrażaj zmian ani nie publikuj repozytorium, dopóki nie zlecę konkretnej pracy. Rozmawiaj ze mną po polsku; interfejs projektu ma pozostać po angielsku.
+
+## Nowsza aktualizacja: 22 września 2026
+
+Dodano profile SQLink/Fala w User (PiTFT i WWW). Migracja zachowała SQLink; podczas końcowej kontroli Fala była już uzupełniona, aktywna i połączona. SQLink pozostał domyślny na rozruch. Opis wcześniejszego eksportu powyżej jest historyczny; aktualne źródła zawierają tę zmianę, a jej sumy są w `software/profiles-release.json`. [Instrukcja profili](../build/PROFILES.md).

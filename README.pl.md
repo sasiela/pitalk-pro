@@ -3,6 +3,7 @@
 **Projekt terminala radiowego na Raspberry Pi z własną obudową do druku 3D.**
 
 [English](README.md) · [Pliki STL](stl/) · [Film z polskim lektorem](Video/PiTalk-Pro-z-lektorem.mp4)
+[Historia zmian](CHANGELOG.md) · [Profiles / Profile](docs/build/PROFILES.md)
 
 [![Panel sterowania PiTALK PRO — przejdź do filmu](docs/images/control-panel.jpg)](Video/PiTalk-Pro-z-lektorem.mp4)
 
