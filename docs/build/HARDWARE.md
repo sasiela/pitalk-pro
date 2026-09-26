@@ -17,7 +17,8 @@ Lista opisuje użyty prototyp, a nie gwarantowane zamienniki. Wersja maszynowa: 
 | Nakrętki M3 | 2 | W prototypie 5 mm między płaskimi bokami, grubość 2 mm |
 | Śruby M3×12 do LCD / dystanse | 4 śruby + 4 dystanse | Śruby potwierdzone przez autora; długość dystansów do zwymiarowania |
 | Przewody PTT i izolacja | 2 × około 10 cm | Koszulki termokurczliwe na każdym lucie; klej na gorąco do zamocowania przycisku |
-| Części drukowane | 10 | Korpus V32, front V38, 4 nakładki V11, 2 pokrętła, podstawa i antena |
+| Części drukowane — poprzedni zestaw | 10 | Korpus V32, front V38, 4 nakładki V11, 2 pokrętła, podstawa i antena |
+| Najnowsza mechanika EC11 | Zobacz opis | [Korpus V39 + front V42](MECHANICAL-EC11.md), 4 nakładki V11, podstawa i antena; gałka enkodera do opracowania |
 
 ## Połączenia
 

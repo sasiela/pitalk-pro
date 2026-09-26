@@ -1,5 +1,7 @@
 # PiTalk Pro assembly
 
+This guide illustrates the earlier prototype. For V39/V42, also follow the [EC11 revision assembly differences](MECHANICAL-EC11.md).
+
 [Polski — illustrated guide](ASSEMBLY.md) · [Photo index](../../photos/README.md)
 
 Follow the prototype author's sequence: **assemble the front first**, then the rear enclosure. Work with power disconnected. Prepare four M3×12 LCD screws, four spacers, two M3 nuts and two M3×12 lower closure screws, two wires approximately 10 cm each, heat-shrink tubing and hot glue. Spacer length still needs a recorded measurement.

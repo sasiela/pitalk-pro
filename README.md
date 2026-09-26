@@ -21,11 +21,24 @@ PiTALK PRO brings a Raspberry Pi 3 Model B, an Adafruit PiTFT 2.2″ display and
 
 This repository contains **printable STL models, demonstration materials and a software source snapshot**. Start software development with [the project handoff](docs/handoff/START-HERE.md) and [software notes](software/README.md). The software snapshot and experimental image tooling are not yet a validated public firmware release.
 
-The mechanical design was refined through repeated physical print-and-fit checks. The latest file set combines the **V32 body**, **V38 flat front** and **V11 button caps**. Fit still depends on the exact hardware and printer tolerances.
+The mechanical design was refined through repeated physical print-and-fit checks. The latest CAD pair is **V39 body + V42 front**, with **V11 button caps**; the previous V32/V38 set remains available. Fit still depends on the exact hardware and printer tolerances.
 
 ## Printable parts
 
 Download the repository with **Code → Download ZIP**, or open an individual file below. Dimensions are in **millimetres**.
+
+### Latest revision: EC11 body V39 + front V42
+
+The latest CAD pair is **V39 body + V42 front**, extended by 8 mm at the top for one EC11 encoder and one decorative antenna. V42 has **two rows of three ventilation slots above the display**. Use these two revisions together.
+
+| Part | Print | Editable CAD |
+| --- | --- | --- |
+| Body V39 | [STL](stl/ec11-v39-v42/01_Body_V39.stl) | [STEP](step/ec11-v39-v42/01_Body_V39.step) |
+| Front V42 | [STL](stl/ec11-v39-v42/02_Front_Panel_V42.stl) | [STEP](step/ec11-v39-v42/02_Front_Panel_V42.step) |
+
+Reuse four V11 caps and the decorative antenna/base from the list below. The old decorative knobs are not the encoder knob. The encoder knob and electrical integration are still pending. The 20 mm upper test print fitted; full assembly of this revision remains to be checked. See [revision dimensions and assembly differences](docs/build/MECHANICAL-EC11.md).
+
+### Previous decorative-knob set: V32 + V38
 
 | Part | STL file | Print quantity |
 | --- | --- | ---: |
@@ -62,7 +75,7 @@ Download the repository with **Code → Download ZIP**, or open an individual fi
 
 Measure replacement components before printing. A shared product name does not guarantee the same casing or shaft dimensions. Keep the existing display spacers and check the front screw length against the assembled stack.
 
-The supplied knobs and antenna are **decorative**. EC11 encoder integration was discussed as a possible future modification; it is **not implemented in these STL files**. External-radio PTT electronics are also outside this mechanical release.
+The supplied knobs and antenna are **decorative**. The V39/V42 revision adds an EC11 mounting provision; its knob, wiring and software integration are not yet validated. External-radio PTT electronics are also outside this mechanical release.
 
 ## Printing
 

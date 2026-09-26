@@ -19,9 +19,22 @@ PiTALK PRO łączy Raspberry Pi 3 Model B, ekran Adafruit PiTFT 2,2″ i kartę 
 
 Repozytorium zawiera **modele STL, materiały prezentacyjne i eksport kodu oprogramowania**. Dokumentacja do dalszej pracy znajduje się w [pakiecie przekazania](docs/handoff/START-HERE.md). Oprogramowanie i narzędzia obrazu są wersją rozwojową, jeszcze nie zatwierdzonym wydaniem firmware.
 
-Projekt był dopasowywany na podstawie kolejnych wydruków. Aktualny zestaw to **korpus V32, płaski front V38 i nakładki V11**. Ostateczne pasowanie zależy od konkretnej elektroniki i dokładności drukarki.
+Projekt był dopasowywany na podstawie kolejnych wydruków. Najnowsza para CAD to **korpus V39 i front V42**, z nakładkami V11; wcześniejszy zestaw V32/V38 pozostaje dostępny. Ostateczne pasowanie zależy od konkretnej elektroniki i dokładności drukarki.
 
 ## Części do druku
+
+### Najnowsza wersja: korpus V39 + front V42 pod EC11
+
+Para **V39 + V42** jest wydłużona u góry o 8 mm, pod jeden enkoder EC11 i ozdobną antenę. Front V42 ma **dwa rzędy po trzy otwory wentylacyjne nad ekranem**. Stosuj te dwie wersje razem.
+
+| Część | Do druku | Do edycji |
+| --- | --- | --- |
+| Korpus V39 | [STL](stl/ec11-v39-v42/01_Body_V39.stl) | [STEP](step/ec11-v39-v42/01_Body_V39.step) |
+| Front V42 | [STL](stl/ec11-v39-v42/02_Front_Panel_V42.stl) | [STEP](step/ec11-v39-v42/02_Front_Panel_V42.step) |
+
+Pozostają cztery nakładki V11 oraz podstawa i ozdobna antena z poniższej listy. Stare pokrętła ozdobne nie pasują jako gałka enkodera; gałka i podłączenie EC11 wymagają opracowania. Próbny wydruk 20 mm górnej części pasował, lecz pełny montaż tej wersji wymaga sprawdzenia. [Wymiary i zmiany montażowe](docs/build/MECHANICAL-EC11.md).
+
+### Poprzedni zestaw z ozdobnymi pokrętłami: V32 + V38
 
 | Część | Plik | Liczba sztuk |
 | --- | --- | ---: |
@@ -45,7 +58,7 @@ Projekt był dopasowywany na podstawie kolejnych wydruków. Aktualny zestaw to *
 - Cztery śruby stożkowe M3×12 do LCD i cztery dystanse; długość dystansów wymaga uzupełnienia pomiarem.
 - Zewnętrzne zasilanie Raspberry Pi; projekt nie przewiduje wewnętrznego akumulatora.
 
-Przed zakupem zamienników sprawdź wymiary. Pokrętła i antena są **ozdobne**. Mocowania enkoderów EC11 i zewnętrzny układ PTT nie są częścią aktualnego zestawu.
+Przed zakupem zamienników sprawdź wymiary. Pokrętła i antena są **ozdobne**. Korpus V39 zawiera miejsce montażu EC11; gałka, okablowanie i obsługa enkodera pozostają do opracowania. Zewnętrzny układ PTT nie jest częścią zestawu.
 
 ## Druk i montaż
 

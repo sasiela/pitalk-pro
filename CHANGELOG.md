@@ -2,6 +2,14 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-26 — Korpus V39 i front V42 pod EC11
+
+- Dodano STL i edytowalne STEP; zachowano wcześniejsze części.
+- Wydłużono górę o 8 mm pod jeden EC11 i antenę, zamknięto slot microSD i ujednolicono zewnętrzne ścianki.
+- Dodano tylne otwory Ø3.4 z gniazdami Ø6.4 / 2.2; wyśrodkowano 40 otworów dna względem śrub.
+- Front V42 ma dwa rzędy po trzy otwory nad ekranem.
+- Sprawdzono CAD i import STEP; autor potwierdził przymiarkę próbnego górnego odcinka. Pełny montaż i integracja enkodera pozostają do sprawdzenia. [Szczegóły](docs/build/MECHANICAL-EC11.md).
+
 ## 2026-09-22 — Czytelniejszy nagłówek profilu
 
 - Po ocenie układu stopki przeniesiono profil pod znak wywoławczy, ponad górną linię.

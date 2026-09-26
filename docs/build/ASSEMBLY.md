@@ -1,5 +1,7 @@
 # Montaż PiTalk Pro — krok po kroku
 
+Ta instrukcja pokazuje wcześniejszy prototyp. Dla najnowszej pary V39/V42 uwzględnij [zmiany montażowe EC11](MECHANICAL-EC11.md).
+
 [English](ASSEMBLY.en.md) · [Lista części](HARDWARE.md) · [Indeks wszystkich zdjęć](../../photos/README.md)
 
 Kolejność podana przez autora prototypu i zestawiona ze zdjęciami `IMG_3595`–`IMG_3619`. **Zaczynamy od kompletnego frontu**, potem montujemy tylną część obudowy. Zdjęcia pokazują kolejne stany, nie każdą czynność osobno; kroki bez zdjęcia wynikają z instrukcji autora.

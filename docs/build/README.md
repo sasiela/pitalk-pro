@@ -1,5 +1,7 @@
 # Zbuduj własny PiTalk Pro
 
+Najnowsza mechanika: [korpus V39 i front V42 pod EC11 — pliki, wymiary i zakres testów](MECHANICAL-EC11.md). Pełny montaż tej wersji wymaga jeszcze sprawdzenia.
+
 Przewodnik dla sprzętu zgodnego z prototypem: Raspberry Pi 3 Model B i PiTFT 2.2 cala. To ścieżka rozwojowa; pełna budowa według tej instrukcji przez drugą osobę nie została jeszcze potwierdzona.
 
 | Etap | Materiały | Wynik, który powinieneś uzyskać |

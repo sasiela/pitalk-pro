@@ -40,3 +40,7 @@ Dodano test wyjścia oraz miernik mikrofonu. Testy logiki/API i symulacja UI prz
 ## Aktualizacja — profile, 22 września 2026
 
 Wdrożono wspólne profile reflektorów w menu i WWW, aktywację z przywracaniem konfiguracji oraz wybór domyślnego profilu na rozruch. Import i zapis sprawdzono na prototypie; w końcowej kontroli Fala była już aktywna i połączona. Audio/TG Fali, powrót do SQLink i restart z drugim profilem pozostają do testu. [Instrukcja, wyniki i ograniczenia](../build/PROFILES.md). Obraz alpha-1 bez tej aktualizacji.
+
+## Mechanika — 2026-09-26
+
+Dodano [korpus V39 i front V42 pod EC11](../build/MECHANICAL-EC11.md), w STL i STEP. Potwierdzona przymiarka próbnego górnego odcinka 20 mm; sprawdzona geometria CAD i brak kolizji korpus–front. Do potwierdzenia pozostaje pełny montaż, dobór tylnych śrub, luz enkodera z przewodami oraz jego gałka i obsługa elektryczna/programowa. Poprzedni zestaw V32/V38 zachowano.
