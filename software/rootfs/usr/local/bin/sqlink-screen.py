@@ -15,8 +15,9 @@ from sqlink.theme import MenuDraw, footer_icons
 from sqlink.display import Settings, DisplayMenu
 display_settings = Settings()
 display_menu = DisplayMenu(display_settings)
-from sqlink.update_ui import UpdateMenu
+from sqlink.update_ui import UpdateMenu, SystemInfoMenu
 update_menu = UpdateMenu()
+info_menu = SystemInfoMenu()
 from sqlink.restart_ui import RestartMenu
 restart_menu = RestartMenu()
 from sqlink.bluetooth_ui import BluetoothMenu
@@ -59,6 +60,7 @@ MAIN_MENU = [
     "WiFi",
     "Display",
     "System Update",
+    "System Info",
     "Restart",
 ]
 
@@ -1584,6 +1586,8 @@ def redraw():
         write_fb(audio_menu.render())
     elif submenu == "Bluetooth":
         write_fb(bluetooth_menu.render())
+    elif submenu == "System Info":
+        write_fb(info_menu.render())
     elif submenu == "System Update":
         write_fb(update_menu.render())
     elif submenu == "Restart":
@@ -1657,6 +1661,13 @@ def handle_button(name):
         if bluetooth_menu.button(name):
             submenu = None
             menu_index = MAIN_MENU.index("Bluetooth")
+        redraw()
+        return
+
+    if submenu == "System Info":
+        if info_menu.button(name):
+            submenu = None
+            menu_index = MAIN_MENU.index("System Info")
         redraw()
         return
 
@@ -1850,6 +1861,8 @@ def handle_button(name):
                 audio_menu.enter()
             if selected == "Bluetooth":
                 bluetooth_menu.enter()
+            if selected == "System Info":
+                info_menu.enter()
             if selected == "System Update":
                 update_menu.enter()
             if selected == "Restart":
@@ -1932,6 +1945,9 @@ try:
             redraw()
 
         if bluetooth_menu.poll() and submenu == "Bluetooth":
+            redraw()
+
+        if submenu == "System Info" and info_menu.poll():
             redraw()
 
         if submenu == "System Update" and update_menu.poll():

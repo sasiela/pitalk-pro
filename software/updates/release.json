@@ -1,12 +1,12 @@
 {
   "format": 1,
-  "tag": "pitalk-v0.1.4",
-  "notes": "New web System Info tab: software, hardware, temperature, uptime and current/historical power flags.",
+  "tag": "pitalk-v0.1.5",
+  "notes": "System Info on the device: software, hardware and power pages; rotate to navigate, click to refresh.",
   "files": {
-    "usr/local/bin/sqlink-screen.py": "0fe1cd0ed131208ba71d1467bf5fa1e6faf64d7f96ede2ffb461b0561b37947e",
+    "usr/local/bin/sqlink-screen.py": "cd432b8344aa31b6dd35362e745828f6d64ff5dc902550e3781c291405387b89",
     "usr/lib/sqlink/encoder.py": "8f1dd6ad39d7ce573e24e4f67219efa353474df0e9cd33dcad565aa29670542a",
     "usr/lib/sqlink/encoder_volume.py": "3f73f8e0e9f5301643c65109bd5b6dc9a34ce1aabde6899e0686e074caf9e9e2",
-    "usr/lib/sqlink/update_ui.py": "628a29a842f189802d3cc6c992830dd8de0874021c970ab85d6ab50c65a6abba",
+    "usr/lib/sqlink/update_ui.py": "f9113d9057ca6c19c0d36de4329fa6fae6cb5b79020a98cabd3234c6bb9b69ba",
     "opt/sqlink-web/server.py": "14fbb4fe507e6d746829d8d984f884875d032f9800a55710ccd068577ea783c7",
     "opt/sqlink-web/listen_audio.py": "d574e72d5e73208bbec4a4180eb1da8db45d12063ca761bb2e5c86dab41bae31",
     "opt/sqlink-web/audio_test.py": "b2c4e77870f377656e7de3480447848448f71192e71d23c8ccfca448d8598cb1",

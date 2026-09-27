@@ -78,3 +78,7 @@ Na nowym urządzeniu utwórz `/etc/sqlink-web/access.json` zgodnie z `software/e
 ### System Info — 0.1.4
 
 Dodano zakładkę WWW System Info: wersja zainstalowana i ostatnio sprawdzona, model, hostname, OS, kernel, architektura, uptime, temperatura CPU oraz bieżące i historyczne flagi napięcia/throttlingu. Dane są migawką odświeżaną przy otwarciu lub przyciskiem Refresh. Brak źródła oznacza Unavailable. API wymaga logowania. Testy obejmują 0x0, 0x50000, 0x50005 i niedostępne czujniki; wygląd i odczyty na fizycznym urządzeniu wymagają potwierdzenia po instalacji. Wydanie korzysta z rozszerzonego aktualizatora WWW.
+
+### System Info na PiTFT — 0.1.5
+
+Menu urządzenia ma trzy strony: Software, Hardware, Power status. UP/DOWN lub obrót enkodera zmienia stronę, ENTER odświeża, BACK wraca do menu. Odczyty odbywają się w tle, także co 10 sekund podczas otwartego okna. Niedostępne wartości oznaczono Unavailable. Sprawdzono rendery 240×320 i składnię; fizyczny wygląd pozostaje do potwierdzenia po instalacji. Nie wymaga kolejnej migracji helpera.

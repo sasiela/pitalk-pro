@@ -2,6 +2,11 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — System Info na urządzeniu 0.1.5
+
+- Trzy strony informacji w menu PiTFT: wersja i system, sprzęt i temperatura, bieżące oraz historyczne błędy zasilania.
+- Odczyty w tle, przełączanie enkoderem i odświeżanie kliknięciem. Sprawdzono podglądy wszystkich stron.
+
 ## 2026-09-27 — System Info 0.1.4
 
 - Nowa zakładka WWW z informacjami o urządzeniu, wersji aplikacji, systemie i temperaturze.
