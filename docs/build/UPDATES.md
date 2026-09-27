@@ -23,3 +23,7 @@ Przy kolejnym wydaniu zmień tag w `release.json`, przelicz SHA-256 czterech pli
 ## Walidacja
 
 `python3 software/tests/test_update.py`: test manifestu, odrzucenia niedozwolonej ścieżki, zapisu atomowego, instalacji i rollbacku na tymczasowych plikach. Nie są to testy odcięcia zasilania na fizycznym urządzeniu. Pierwszy prototyp zgłasza undervoltage; pełnego cyklu instalacji nowego wydania na urządzeniu nie potwierdzono.
+
+### Wdrożenie prototypu — 2026-09-27
+
+Zainstalowano i włączono usługę aktualizatora za zgodą właściciela. Ekran oraz helper aktywne, bez automatycznych restartów; świeży heartbeat po zapisie obrazu. Sprawdzenie GitHub zwróciło `Up to date`, zainstalowana i dostępna wersja `pitalk-v0.1.0`. Urządzenie nadal zgłasza bieżące undervoltage (`0x50005`); pełnej instalacji kolejnego wydania ani fizycznego rollbacku nie testowano.

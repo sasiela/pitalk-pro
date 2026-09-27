@@ -52,3 +52,7 @@ Dodano [korpus V39 i front V42 pod EC11](../build/MECHANICAL-EC11.md), w STL i S
 ## Aktualizator — 2026-09-27
 
 [System Update](../build/UPDATES.md): implementacja i testy lokalne instalacji/rollbacku gotowe. Pełny fizyczny cykl aktualizacji pozostaje do sprawdzenia po rozwiązaniu undervoltage. Nie oznacza gotowego obrazu firmware.
+
+### Wdrożenie prototypu — 2026-09-27
+
+Zainstalowano i włączono usługę aktualizatora za zgodą właściciela. Ekran oraz helper aktywne, bez automatycznych restartów; świeży heartbeat po zapisie obrazu. Sprawdzenie GitHub zwróciło `Up to date`, zainstalowana i dostępna wersja `pitalk-v0.1.0`. Urządzenie nadal zgłasza bieżące undervoltage (`0x50005`); pełnej instalacji kolejnego wydania ani fizycznego rollbacku nie testowano.
