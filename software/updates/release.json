@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "tag": "pitalk-v0.1.0",
+  "notes": "Encoder navigation, home volume and on-device update menu.",
+  "files": {
+    "usr/local/bin/sqlink-screen.py": "0fe1cd0ed131208ba71d1467bf5fa1e6faf64d7f96ede2ffb461b0561b37947e",
+    "usr/lib/sqlink/encoder.py": "8f1dd6ad39d7ce573e24e4f67219efa353474df0e9cd33dcad565aa29670542a",
+    "usr/lib/sqlink/encoder_volume.py": "3f73f8e0e9f5301643c65109bd5b6dc9a34ce1aabde6899e0686e074caf9e9e2",
+    "usr/lib/sqlink/update_ui.py": "53d2d5b2e7c8d9c44fccf4a4c8f13f1833f7698692164bdd7a55690a0dc8b74b"
+  }
+}

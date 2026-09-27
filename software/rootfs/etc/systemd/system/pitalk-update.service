@@ -1,0 +1,23 @@
+[Unit]
+Description=PiTalk application update helper
+After=network.target sqlink-screen.service
+Wants=sqlink-screen.service
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/sbin/pitalk-update.py
+User=root
+Group=sqlink
+RuntimeDirectory=pitalk-update
+RuntimeDirectoryMode=0750
+StateDirectory=pitalk-update
+StateDirectoryMode=0700
+UMask=0077
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+ReadWritePaths=/usr/local/bin /usr/lib/sqlink /var/lib/pitalk-update
+[Install]
+WantedBy=multi-user.target

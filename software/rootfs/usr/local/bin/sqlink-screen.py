@@ -15,6 +15,8 @@ from sqlink.theme import MenuDraw, footer_icons
 from sqlink.display import Settings, DisplayMenu
 display_settings = Settings()
 display_menu = DisplayMenu(display_settings)
+from sqlink.update_ui import UpdateMenu
+update_menu = UpdateMenu()
 from sqlink.restart_ui import RestartMenu
 restart_menu = RestartMenu()
 from sqlink.bluetooth_ui import BluetoothMenu
@@ -56,6 +58,7 @@ MAIN_MENU = [
     "Bluetooth",
     "WiFi",
     "Display",
+    "System Update",
     "Restart",
 ]
 
@@ -409,6 +412,10 @@ def write_fb(img):
     data = framebuffer_bytes(display_settings.dim(img))
     with open(FB, "wb", buffering=0) as fb:
         fb.write(data)
+    heartbeat = {"pid": os.getpid(), "time": time.time()}
+    with open('/run/sqlink-ui/update-heartbeat.tmp', 'w') as f:
+        json.dump(heartbeat, f)
+    os.replace('/run/sqlink-ui/update-heartbeat.tmp', '/run/sqlink-ui/update-heartbeat.json')
 
 
 menu_mode = False
@@ -1577,6 +1584,8 @@ def redraw():
         write_fb(audio_menu.render())
     elif submenu == "Bluetooth":
         write_fb(bluetooth_menu.render())
+    elif submenu == "System Update":
+        write_fb(update_menu.render())
     elif submenu == "Restart":
         write_fb(restart_menu.render())
     elif submenu == "Display":
@@ -1648,6 +1657,13 @@ def handle_button(name):
         if bluetooth_menu.button(name):
             submenu = None
             menu_index = MAIN_MENU.index("Bluetooth")
+        redraw()
+        return
+
+    if submenu == "System Update":
+        if update_menu.button(name):
+            submenu = None
+            menu_index = MAIN_MENU.index("System Update")
         redraw()
         return
 
@@ -1834,6 +1850,8 @@ def handle_button(name):
                 audio_menu.enter()
             if selected == "Bluetooth":
                 bluetooth_menu.enter()
+            if selected == "System Update":
+                update_menu.enter()
             if selected == "Restart":
                 restart_menu.enter()
             if selected == "Display":
@@ -1869,7 +1887,13 @@ def return_home_if_idle(now):
 
 TG_LIST = load_tg_list()
 
+from sqlink.encoder import Encoder
+from sqlink.encoder_volume import HomeVolume
+home_volume = HomeVolume()
+
 h = lgpio.gpiochip_open(0)
+encoder = Encoder(lgpio, h)
+print("ENCODER: BCM 5/6/13 ready", flush=True)
 
 for pin in BUTTONS:
     lgpio.gpio_claim_input(
@@ -1910,11 +1934,27 @@ try:
         if bluetooth_menu.poll() and submenu == "Bluetooth":
             redraw()
 
+        if submenu == "System Update" and update_menu.poll():
+            redraw()
+
         if restart_menu.poll() and submenu == "Restart":
             redraw()
 
         if wifi_menu.poll() and submenu == "WiFi":
             redraw()
+
+        volume_message = home_volume.poll()
+        if volume_message and not menu_mode:
+            set_message(volume_message, 2.0)
+            redraw()
+
+        for action in encoder.poll(time.monotonic()):
+            last_menu_activity = time.monotonic()
+            print("ENCODER:", action, flush=True)
+            if not menu_mode and action in ("UP", "DOWN"):
+                home_volume.turn(action)
+            else:
+                handle_button(action)
 
         for pin, name in BUTTONS.items():
             state = lgpio.gpio_read(h, pin)
@@ -1946,4 +1986,5 @@ try:
         time.sleep(0.01)
 
 finally:
+    encoder.close()
     lgpio.gpiochip_close(h)

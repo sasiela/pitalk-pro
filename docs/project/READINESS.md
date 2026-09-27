@@ -48,3 +48,7 @@ Dodano [korpus V39 i front V42 pod EC11](../build/MECHANICAL-EC11.md), w STL i S
 ## Zestaw do pobrania — 2026-09-27
 
 [Kompletny ZIP STL V39/V42](../../releases/PITalk-Final-STL-V39-V42.zip): 5 modeli, 8 drukowanych części. Sprawdzono zgodność kopii i integralność archiwum. Zakres potwierdzenia montażu pozostaje bez zmian; gałka EC11 nie jest jeszcze gotowa.
+
+## Aktualizator — 2026-09-27
+
+[System Update](../build/UPDATES.md): implementacja i testy lokalne instalacji/rollbacku gotowe. Pełny fizyczny cykl aktualizacji pozostaje do sprawdzenia po rozwiązaniu undervoltage. Nie oznacza gotowego obrazu firmware.

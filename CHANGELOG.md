@@ -2,6 +2,13 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Enkoder i aktualizator aplikacji 0.1.0
+
+- Zapisano działającą obsługę EC11 i głośności z terminala.
+- Dodano System Update: oznaczone wersje GitHub, kontrola sum, kopia i automatyczne wycofanie.
+- Wersja 1 obejmuje cztery pliki ekranu/enkodera; blokuje instalację podczas RX/PTT i przy niskim napięciu.
+- Testy transakcji i wycofania na plikach tymczasowych; fizyczny cykl aktualizacji wymaga jeszcze potwierdzenia. [Instrukcja](docs/build/UPDATES.md).
+
 ## 2026-09-27 — Kompletny zestaw STL V39/V42
 
 - Dodano katalog i ZIP: korpus V39, front V42, nakładka V11 (druk 4 szt.), podstawa anteny i antena 70 mm. Nazwy plików po angielsku.

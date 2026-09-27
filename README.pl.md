@@ -90,3 +90,7 @@ W [zgłoszeniu na GitHub](https://github.com/sasiela/pitalk-pro/issues) podaj we
 ## Kod i dokumentacja projektu
 
 Dodano aktualny eksport kodu i dokumentację do dalszej pracy w Cursorze: [Zacznij tutaj](docs/handoff/START-HERE.md), [oprogramowanie](software/README.md). To snapshot i eksperymentalne narzędzia obrazu, nie zatwierdzone wydanie firmware.
+
+## On-device updates / Aktualizacje z urządzenia
+
+[System Update: instrukcja i zakres aktualizacji](docs/build/UPDATES.md). Pierwsza wersja obejmuje ekran i enkoder; nie aktualizuje całego systemu ani panelu WWW.

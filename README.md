@@ -118,3 +118,7 @@ README.pl.md          Polish project page
 ## Feedback
 
 For fit problems, include the part/version, printer, material, layer height and a photo or measured discrepancy in a [GitHub issue](https://github.com/sasiela/pitalk-pro/issues).
+
+## On-device updates / Aktualizacje z urządzenia
+
+[System Update: instrukcja i zakres aktualizacji](docs/build/UPDATES.md). Pierwsza wersja obejmuje ekran i enkoder; nie aktualizuje całego systemu ani panelu WWW.
