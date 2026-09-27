@@ -44,8 +44,6 @@ def guard():
     pid=Path('/run/svxlink.pid').read_text().strip()
     if len(radio)<3 or radio[0]!=pid:raise RuntimeError('Radio state unavailable')
     if radio[2]!='0':raise RuntimeError('Wait until reception ends')
-    value=subprocess.check_output(['vcgencmd','get_throttled'],text=True,timeout=5).strip().split('=')[-1]
-    if int(value,16)&1:raise RuntimeError('Low voltage: check supply/cable')
     if shutil.disk_usage(ROOT).free<50*1024*1024:raise RuntimeError('Not enough free space')
 
 def restart():subprocess.run(['systemctl','restart','sqlink-screen'],check=True,timeout=20)

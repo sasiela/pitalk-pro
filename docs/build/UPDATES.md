@@ -10,7 +10,7 @@ Enkoder: A=BCM5/pin29, B=BCM6/pin31, klik=BCM13/pin33, masa=pin39. Na ekranie g�
 
 Urządzenie pobiera `software/updates/stable.json` przez HTTPS, następnie manifest i cztery pliki z oznaczonego tagu `pitalk-vX.Y.Z`. Nie wymaga programu Git ani tokenu do publicznego repozytorium. Weryfikuje SHA-256, listę dozwolonych ścieżek i składnię Pythona przed zmianą. Zaufanie opiera się na HTTPS i kontroli repozytorium; nie ma niezależnego podpisu wydania. Nie zmieniaj opublikowanych tagów.
 
-Instalacja wymaga: braku PTT i RX, aktualnego PID w stanie radia, braku bieżącego undervoltage oraz minimum 50 MiB miejsca. Historyczna flaga spadku napięcia sama nie blokuje instalacji. Awaria sieci podczas pobierania nie zmienia działających plików.
+Instalacja wymaga: braku PTT i RX, aktualnego PID w stanie radia, minimum 50 MiB miejsca. Na życzenie właściciela niskie napięcie nie blokuje instalacji. Awaria sieci podczas pobierania nie zmienia działających plików.
 
 Przed podmianą plików powstaje kopia w `/var/lib/pitalk-update/backup` i trwały dziennik `pending.json`. Po restarcie ekranu helper oczekuje na świeży heartbeat po zapisie framebuffer, należący do bieżącego PID; wymagane jest 20 sekund stabilności w czasie do 75 sekund. Przy błędzie przywraca poprzednie pliki. Po przerwaniu instalacji helper przy starcie odtwarza kopię. To kontrola pracy programu, nie fizycznego obrazu LCD ani jakości audio. Zachowywana jest jedna kopia poprzedniej transakcji.
 

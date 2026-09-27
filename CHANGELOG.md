@@ -2,6 +2,10 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Aktualizacje bez blokady napięcia
+
+- Na wyraźne życzenie właściciela usunięto sprawdzanie undervoltage z blokady instalacji. Zachowano kontrolę RX/PTT, wolnego miejsca, kopię i rollback. Zaktualizowano usługę na terminalu.
+
 ## 2026-09-27 — Enkoder i aktualizator aplikacji 0.1.0
 
 - Zapisano działającą obsługę EC11 i głośności z terminala.
