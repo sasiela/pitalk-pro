@@ -46,4 +46,15 @@ class Tests(unittest.TestCase):
  def test_update_helper_unavailable(self):
   with patch.object(server,'bridge',side_effect=OSError('socket missing')):
    self.assertEqual(self.call(path='/api/update')[0],503)
+ def test_system_info_auth(self):
+  self.assertEqual(self.call(auth=False,path='/api/system-info')[0],401)
+ def test_system_info_power_flags(self):
+  for flags,now,historical in [('0x0',False,False),('0x50000',False,True),('0x50005',True,True)]:
+   with patch.object(server,'bridge',return_value={'ok':True,'installed':'pitalk-v0.1.4'}),patch.object(server,'run',return_value='throttled='+flags):
+    code,d=self.call(path='/api/system-info');self.assertEqual(code,200)
+    p=d['data']['power'];self.assertEqual(p['undervoltage'],now);self.assertEqual(p['undervoltage_since_boot'],historical)
+    self.assertEqual(d['data']['version'],'pitalk-v0.1.4')
+ def test_system_info_missing_sensors(self):
+  with patch.object(server,'bridge',side_effect=OSError()),patch.object(server,'run',side_effect=OSError()),patch.object(server.pathlib.Path,'read_text',side_effect=OSError()):
+   d=server.system_info();self.assertIsNone(d['power']);self.assertIsNone(d['version']);self.assertIsNone(d['temperature_c'])
 if __name__=='__main__':unittest.main()

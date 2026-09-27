@@ -27,6 +27,28 @@ def state():
  except (OSError,ValueError):pass
  mode='TX' if ptt else 'OFFLINE' if not online else 'RX' if rx else 'MONITOR' if tg==0 else 'IDLE'
  return dict(profile=profile_state.current().get("name", "Unknown"),online=online,mode=mode,tg=tg,talker=talker if mode=='RX' else '',callsign=reflector.get_callsign(),uptime=int(float(pathlib.Path('/proc/uptime').read_text().split()[0])),load=os.getloadavg()[0])
+def system_info():
+ def read(path):
+  try:return pathlib.Path(path).read_text().strip().strip('\x00')
+  except OSError:return ''
+ def number(value,scale=1):
+  try:return round(float(value)/scale,1)
+  except (ValueError,TypeError):return None
+ release={}
+ for line in read('/etc/os-release').splitlines():
+  key,sep,value=line.partition('=')
+  if sep:release[key]=value.strip('"')
+ try:
+  update=bridge('update',{'action':'status'})
+  if update.get('ok') is False:update={}
+ except Exception:update={}
+ try:
+  raw=run(['/usr/bin/vcgencmd','get_throttled'])
+  flags=int(raw.split('=',1)[1],16)
+ except Exception:flags=None
+ power=None if flags is None else dict(raw=hex(flags),undervoltage=bool(flags&1),throttled=bool(flags&4),undervoltage_since_boot=bool(flags&(1<<16)),throttled_since_boot=bool(flags&(1<<18)))
+ return dict(version=update.get('installed'),available=update.get('available'),hostname=socket.gethostname(),model=read('/proc/device-tree/model') or 'Unknown',os=release.get('PRETTY_NAME','Unknown'),kernel=os.uname().release,architecture=os.uname().machine,uptime_seconds=number(read('/proc/uptime').split(' ')[0]),temperature_c=number(read('/sys/class/thermal/thermal_zone0/temp'),1000),power=power)
+
 def diagnostics():
  units=['svxlink','sqlink-screen','sqlink-ptt-button','sqlink-bluetooth-helper','sqlink-wifi-helper','sqlink-web','pitalk-update']
  services={}
@@ -127,7 +149,7 @@ class Handler(BaseHTTPRequestHandler):
    if path=='/api/listen':
     if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session[1]['csrf']):return self.reply(403,dict(ok=False,message='Reload the page before listening.'))
     return listen_audio.stream(self)
-   routes={'/api/update':lambda:bridge('update',{'action':'status'}),'/api/profiles':lambda:bridge('wifi',{'action':'profiles_snapshot'}),'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
+   routes={'/api/system-info':system_info,'/api/update':lambda:bridge('update',{'action':'status'}),'/api/profiles':lambda:bridge('wifi',{'action':'profiles_snapshot'}),'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
    if path not in routes:return self.reply(404,{'ok':False})
    self.reply(200,dict(ok=True,data=routes[path]()))
   except (BrokenPipeError,ConnectionResetError):pass

@@ -45,3 +45,7 @@ Jednorazowa migracja prototypu 2026-09-27 zachowała filtr LAN w `/etc/sqlink-we
 0.1.3 dostarcza panel WWW z aktualizacjami. Instalacja restartuje ekran i WWW (sesja przeglądarki oraz odsłuch zostaną przerwane); kontroluje heartbeat ekranu, aktywność WWW i odpowiedź HTTPS przez 20 sekund. W razie błędu przywraca wszystkie pliki transakcji. Stare wydania czteroplikowe pozostają obsługiwane. Stary helper nie zainstaluje wydania 11-plikowego: wymaga najpierw migracji administracyjnej.
 
 Na nowym urządzeniu utwórz `/etc/sqlink-web/access.json` zgodnie z `software/examples/sqlink-web-access.json.example`, ustawiając rzeczywistą podsieć i dozwolone nazwy. Brak konfiguracji blokuje dostęp, nie otwiera panelu. Plik jest poza wydaniem i nie jest nadpisywany przez update. Fizyczny test instalacji 0.1.3 oczekuje na operatora. Automatyczny monit po starcie nadal nie jest częścią tej wersji.
+
+### System Info — 0.1.4
+
+Dodano zakładkę WWW System Info: wersja zainstalowana i ostatnio sprawdzona, model, hostname, OS, kernel, architektura, uptime, temperatura CPU oraz bieżące i historyczne flagi napięcia/throttlingu. Dane są migawką odświeżaną przy otwarciu lub przyciskiem Refresh. Brak źródła oznacza Unavailable. API wymaga logowania. Testy obejmują 0x0, 0x50000, 0x50005 i niedostępne czujniki; wygląd i odczyty na fizycznym urządzeniu wymagają potwierdzenia po instalacji. Wydanie korzysta z rozszerzonego aktualizatora WWW.

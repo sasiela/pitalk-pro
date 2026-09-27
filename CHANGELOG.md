@@ -2,6 +2,12 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — System Info 0.1.4
+
+- Nowa zakładka WWW z informacjami o urządzeniu, wersji aplikacji, systemie i temperaturze.
+- Bieżące błędy zasilania oddzielono od flag historycznych; brak danych nie oznacza poprawnego zasilania.
+- Sprawdzono składnię JS/Python, 11 testów API i 7 testów aktualizatora. Fizyczny test panelu po aktualizacji pozostaje do potwierdzenia.
+
 ## 2026-09-27 — Wydanie 0.1.3 i migracja WWW
 
 - Rozszerzono aktualizator prototypu o WWW, zachowując prywatną konfigurację LAN poza plikami aplikacji.
