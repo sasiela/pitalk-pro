@@ -11,6 +11,13 @@ class Tests(unittest.TestCase):
  def test_manifest_valid(self):
   m={'format':1,'tag':'pitalk-v0.1.0','files':{n:'0'*64 for n in u.ALLOWED}}
   with patch.object(u,'download',return_value=json.dumps(m).encode()):self.assertEqual(u.manifest(m['tag']),m)
+ def test_legacy_manifest_still_supported(self):
+  m={'format':1,'tag':'pitalk-v0.1.2','files':{n:'0'*64 for n in u.LEGACY}}
+  with patch.object(u,'download',return_value=json.dumps(m).encode()):self.assertEqual(u.manifest(m['tag']),m)
+ def test_partial_web_manifest_rejected(self):
+  m={'format':1,'tag':'pitalk-v0.1.3','files':{n:'0'*64 for n in u.LEGACY|{'opt/sqlink-web/server.py'}}}
+  with patch.object(u,'download',return_value=json.dumps(m).encode()):
+   with self.assertRaises(ValueError):u.manifest(m['tag'])
  def test_atomic(self):
   with tempfile.TemporaryDirectory() as d:
    p=Path(d)/'file';p.write_bytes(b'old');u.atomic(p,b'new',0o640)

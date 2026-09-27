@@ -114,7 +114,8 @@ class Handler(BaseHTTPRequestHandler):
    return key,s
  def local_access(self):
   host=self.headers.get('Host','').split(':')[0].lower()
-  return ipaddress.ip_address(self.client_address[0]) in ipaddress.ip_network('192.168.1.0/24') and host in ('192.168.1.100','pitalk-pro','pitalk-pro.local')
+  config=json.loads(pathlib.Path('/etc/sqlink-web/access.json').read_text())
+  return ipaddress.ip_address(self.client_address[0]) in ipaddress.ip_network(config['network']) and host in config['hosts']
  def do_GET(self):
   try:
    if not self.local_access():return self.reply(403,dict(ok=False,message='Local network access only.'))

@@ -1,0 +1,8 @@
+{
+  "network": "192.168.1.0/24",
+  "hosts": [
+    "192.168.1.100",
+    "pitalk-pro",
+    "pitalk-pro.local"
+  ]
+}

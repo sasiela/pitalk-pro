@@ -2,6 +2,12 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Wydanie 0.1.3 i migracja WWW
+
+- Rozszerzono aktualizator prototypu o WWW, zachowując prywatną konfigurację LAN poza plikami aplikacji.
+- Wydanie 0.1.3 zawiera panel System Update. Kontrola działania obejmuje ekran i odpowiedź HTTPS; rollback obejmuje cały zestaw.
+- Aktualizacja restartuje również WWW i wymaga ponownego zalogowania. Test fizycznej instalacji 0.1.3 pozostaje do potwierdzenia.
+
 ## 2026-09-27 — Panel WWW: obsługa aktualizacji (przygotowana)
 
 - Dodano System Update z wersjami, sprawdzaniem, potwierdzeniem instalacji i odświeżaniem statusu.

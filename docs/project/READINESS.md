@@ -66,3 +66,11 @@ Wersja `pitalk-v0.1.2` poprawia układ System Update: nagłówek obok ikony powr
 System zawiera sekcję System Update: wersje, ręczne sprawdzenie, potwierdzenie instalacji i status odświeżany w tle. API wymaga sesji, operacje POST także CSRF; używa istniejącego ograniczonego helpera. Brak helpera jest widoczny jako niedostępność bez blokowania pozostałego panelu. Sprawdzanie przy starcie urządzenia i monit LCD nie są jeszcze zaimplementowane.
 
 Właściciel potwierdził działanie aktualizacji 0.1.2 z terminala. GitHub + menu urządzenia to uzgodniony kanał aktualizacji. Obecna lista czterech plików nie obejmuje WWW: ta zmiana panelu nie jest jeszcze wdrożona ani oferowana przez stable.json. Rozszerzenie instalatora wymaga osobnej migracji; nie wolno nadpisać prywatnego filtra LAN przykładowym server.py z repozytorium.
+
+### Rozszerzony instalator i wydanie 0.1.3
+
+Jednorazowa migracja prototypu 2026-09-27 zachowała filtr LAN w `/etc/sqlink-web/access.json` i rozszerzyła helper o siedem plików WWW (łącznie 11 plików wydania). Usługa działa; kopia poprzedniego helpera i unitu jest w `/var/backups/pitalk-web-bootstrap-20260927-194540`. Aplikacja pozostała 0.1.2 do instalacji z menu.
+
+0.1.3 dostarcza panel WWW z aktualizacjami. Instalacja restartuje ekran i WWW (sesja przeglądarki oraz odsłuch zostaną przerwane); kontroluje heartbeat ekranu, aktywność WWW i odpowiedź HTTPS przez 20 sekund. W razie błędu przywraca wszystkie pliki transakcji. Stare wydania czteroplikowe pozostają obsługiwane. Stary helper nie zainstaluje wydania 11-plikowego: wymaga najpierw migracji administracyjnej.
+
+Na nowym urządzeniu utwórz `/etc/sqlink-web/access.json` zgodnie z `software/examples/sqlink-web-access.json.example`, ustawiając rzeczywistą podsieć i dozwolone nazwy. Brak konfiguracji blokuje dostęp, nie otwiera panelu. Plik jest poza wydaniem i nie jest nadpisywany przez update. Fizyczny test instalacji 0.1.3 oczekuje na operatora. Automatyczny monit po starcie nadal nie jest częścią tej wersji.

@@ -1,11 +1,18 @@
 {
   "format": 1,
-  "tag": "pitalk-v0.1.2",
-  "notes": "System Update layout matches other menus; fixes overlapping title, confirmation and status text.",
+  "tag": "pitalk-v0.1.3",
+  "notes": "Web System Update controls; requires the extended updater bootstrap.",
   "files": {
     "usr/local/bin/sqlink-screen.py": "0fe1cd0ed131208ba71d1467bf5fa1e6faf64d7f96ede2ffb461b0561b37947e",
     "usr/lib/sqlink/encoder.py": "8f1dd6ad39d7ce573e24e4f67219efa353474df0e9cd33dcad565aa29670542a",
     "usr/lib/sqlink/encoder_volume.py": "3f73f8e0e9f5301643c65109bd5b6dc9a34ce1aabde6899e0686e074caf9e9e2",
-    "usr/lib/sqlink/update_ui.py": "628a29a842f189802d3cc6c992830dd8de0874021c970ab85d6ab50c65a6abba"
+    "usr/lib/sqlink/update_ui.py": "628a29a842f189802d3cc6c992830dd8de0874021c970ab85d6ab50c65a6abba",
+    "opt/sqlink-web/server.py": "254366189d6b19cccd44b7d16e70ed69f6a75a9d0534f0b7d782ad8424116615",
+    "opt/sqlink-web/listen_audio.py": "d574e72d5e73208bbec4a4180eb1da8db45d12063ca761bb2e5c86dab41bae31",
+    "opt/sqlink-web/audio_test.py": "b2c4e77870f377656e7de3480447848448f71192e71d23c8ccfca448d8598cb1",
+    "opt/sqlink-web/static/index.html": "33dcc9aaf9e2e074e7b59f32045dd10b8af285a16070ad4fc14f26ced539770c",
+    "opt/sqlink-web/static/listen-worklet.js": "59be6745fbd627d893dcd305ae19acf6e2b1f5c053bbf1c86fd0d6bf798a5fe8",
+    "opt/sqlink-web/static/style.css": "bf4feb853a782befadb830adeba269ad467653203ac4ec0104fa6b2166832e3f",
+    "opt/sqlink-web/static/app.js": "716c88097430ba9f5bc029538d690188b7a0f63ec0d7e92c367e78b8f085add2"
   }
 }

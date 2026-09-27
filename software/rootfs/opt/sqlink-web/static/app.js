@@ -152,7 +152,7 @@ function stopUpdateStatus(){clearTimeout(updateTimer);updateTimer=null;updateGen
 function setupUpdateStatus(id){
  const generation=updateGeneration;
  const card=document.createElement('article');card.className='card';
- card.innerHTML='<p class="eyebrow">SOFTWARE</p><div class="subheading"><h2>System Update</h2><span id="update-badge" class="badge">Reading…</span></div><div class="grid two"><p>Installed<br><strong id="update-installed">—</strong></p><p>Available<br><strong id="update-available">—</strong></p></div><p id="update-message" role="status" aria-live="polite">Reading update status…</p><div class="actions"><button id="update-check">Check for updates</button><button id="update-install" class="primary" disabled>Install update</button></div><p class="hint">Updates come from the PiTALK GitHub release channel. Installation requires confirmation and briefly restarts the device screen. Wait until reception and PTT are idle.</p>';
+ card.innerHTML='<p class="eyebrow">SOFTWARE</p><div class="subheading"><h2>System Update</h2><span id="update-badge" class="badge">Reading…</span></div><div class="grid two"><p>Installed<br><strong id="update-installed">—</strong></p><p>Available<br><strong id="update-available">—</strong></p></div><p id="update-message" role="status" aria-live="polite">Reading update status…</p><div class="actions"><button id="update-check">Check for updates</button><button id="update-install" class="primary" disabled>Install update</button></div><p class="hint">Updates come from the PiTALK GitHub release channel. Installation requires confirmation and restarts the screen and web panel. Sign in again after installation. Wait until reception and PTT are idle.</p>';
  $('#content').prepend(card);
  const current=()=>generation===updateGeneration&&id===viewId&&!!csrf&&card.isConnected;
  let requesting=false;
@@ -174,7 +174,7 @@ function setupUpdateStatus(id){
  }
  async function command(action){
   if(requesting||!current())return;
-  if(action==='install'&&!await confirmBox('Install software update?','The device screen will restart. Keep power connected until installation finishes.'))return;
+  if(action==='install'&&!await confirmBox('Install software update?','The screen and web panel will restart and you will be signed out. Keep power connected until installation finishes.'))return;
   if(!current())return;
   requesting=true;$('#update-check').disabled=true;$('#update-install').disabled=true;
   try{const d=await api('update',{action,confirm:action==='install'});display(d)}
