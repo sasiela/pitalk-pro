@@ -2,6 +2,11 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Wydanie testowe 0.1.1
+
+- Dodano widoczny napis `Update UI v0.1.1` w menu aktualizacji, aby potwierdzić załadowanie nowego kodu po instalacji z urządzenia.
+- Pozostałe trzy pliki aplikacji bez zmian. Wydanie przeznaczone do pierwszego fizycznego testu aktualizatora; wynik testu nie jest jeszcze potwierdzony.
+
 ## 2026-09-27 — Aktualizacje bez blokady napięcia
 
 - Na wyraźne życzenie właściciela usunięto sprawdzanie undervoltage z blokady instalacji. Zachowano kontrolę RX/PTT, wolnego miejsca, kopię i rollback. Zaktualizowano usługę na terminalu.

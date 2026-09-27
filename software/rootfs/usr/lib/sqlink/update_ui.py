@@ -47,6 +47,7 @@ class UpdateMenu:
         d.text((14,18),'System / Update',font=self.font,fill=theme.TEXT)
         d.text((14,48),'Current: '+self.data.get('installed','...'),font=self.small,fill=theme.MUTED)
         d.text((14,67),'Latest: '+str(self.data.get('available') or 'Check first'),font=self.small,fill=theme.MUTED)
+        d.text((14,85),'Update UI v0.1.1',font=self.small,fill=theme.MUTED)
         labels=['Cancel','Install now'] if self.confirm else ['Check for updates','Install update','Back']
         if self.confirm:d.text((14,93),'Restart screen to update?',font=self.small,fill=theme.TEXT)
         for i,label in enumerate(labels):
