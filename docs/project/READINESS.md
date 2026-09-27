@@ -44,3 +44,7 @@ Wdrożono wspólne profile reflektorów w menu i WWW, aktywację z przywracaniem
 ## Mechanika — 2026-09-26
 
 Dodano [korpus V39 i front V42 pod EC11](../build/MECHANICAL-EC11.md), w STL i STEP. Potwierdzona przymiarka próbnego górnego odcinka 20 mm; sprawdzona geometria CAD i brak kolizji korpus–front. Do potwierdzenia pozostaje pełny montaż, dobór tylnych śrub, luz enkodera z przewodami oraz jego gałka i obsługa elektryczna/programowa. Poprzedni zestaw V32/V38 zachowano.
+
+## Zestaw do pobrania — 2026-09-27
+
+[Kompletny ZIP STL V39/V42](../../releases/PITalk-Final-STL-V39-V42.zip): 5 modeli, 8 drukowanych części. Sprawdzono zgodność kopii i integralność archiwum. Zakres potwierdzenia montażu pozostaje bez zmian; gałka EC11 nie jest jeszcze gotowa.

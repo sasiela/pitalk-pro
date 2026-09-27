@@ -2,6 +2,11 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Kompletny zestaw STL V39/V42
+
+- Dodano katalog i ZIP: korpus V39, front V42, nakładka V11 (druk 4 szt.), podstawa anteny i antena 70 mm. Nazwy plików po angielsku.
+- Sprawdzono zgodność kopii z plikami źródłowymi i integralność ZIP. Gałka enkodera pozostaje do zaprojektowania.
+
 ## 2026-09-26 — Korpus V39 i front V42 pod EC11
 
 - Dodano STL i edytowalne STEP; zachowano wcześniejsze części.

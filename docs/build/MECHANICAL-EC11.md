@@ -43,3 +43,7 @@ Po polsku: montuj V39 z V42. Przymierz enkoder przed elektroniką, sprawdź izol
 - CAD checks: valid single solids, STEP reimport successful, 40 body vents and six upper-front vents open, no body/front intersection in the checked assembly.
 - Full V39/V42 physical assembly, rear fasteners, encoder clearance with soldered wires, and encoder operation remain unverified.
 - Check orientation and supports in the slicer; these files do not include a validated print profile.
+
+## Zestaw do pobrania — 2026-09-27
+
+[Kompletny ZIP STL V39/V42](../../releases/PITalk-Final-STL-V39-V42.zip): 5 modeli, 8 drukowanych części. Sprawdzono zgodność kopii i integralność archiwum. Zakres potwierdzenia montażu pozostaje bez zmian; gałka EC11 nie jest jeszcze gotowa.

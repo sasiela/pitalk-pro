@@ -1,5 +1,7 @@
 # PiTALK PRO
 
+**[Pobierz kompletny najnowszy zestaw STL](releases/PITalk-Final-STL-V39-V42.zip)** · [STL files](stl/PITalk-Final-STL-V39-V42/)
+
 **Projekt terminala radiowego na Raspberry Pi z własną obudową do druku 3D.**
 
 [English](README.md) · [Pliki STL](stl/) · [Film z polskim lektorem](Video/PiTalk-Pro-z-lektorem.mp4)
