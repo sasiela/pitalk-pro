@@ -2,6 +2,11 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — Panel WWW: obsługa aktualizacji (przygotowana)
+
+- Dodano System Update z wersjami, sprawdzaniem, potwierdzeniem instalacji i odświeżaniem statusu.
+- Nowe API korzysta z sesji, CSRF i ograniczonego helpera urządzenia. Wdrożenie WWW wymaga rozszerzenia obecnego aktualizatora; kanał stable pozostaje 0.1.2.
+
 ## 2026-09-27 — System Update 0.1.2
 
 - Dopasowano nagłówek, separatory i zaznaczenie do pozostałych menu. Usunięto dodatkową etykietę wersji testowej; wersja instalacji pozostaje w Current.

@@ -60,3 +60,9 @@ Zainstalowano i włączono usługę aktualizatora za zgodą właściciela. Ekran
 ### Poprawka interfejsu 0.1.2 — 2026-09-27
 
 Wersja `pitalk-v0.1.2` poprawia układ System Update: nagłówek obok ikony powrotu, wspólne zaznaczenie, osobne miejsce na potwierdzenie i maksymalnie trzy linie komunikatu. Wybierz Check for updates, następnie Install update i Install now. Po instalacji sprawdź Current: pitalk-v0.1.2 oraz brak nakładania napisów. Rendery sprawdzono lokalnie; instalacja i wygląd na fizycznym LCD wymagają potwierdzenia właściciela.
+
+### Panel WWW — przygotowany 2026-09-27
+
+System zawiera sekcję System Update: wersje, ręczne sprawdzenie, potwierdzenie instalacji i status odświeżany w tle. API wymaga sesji, operacje POST także CSRF; używa istniejącego ograniczonego helpera. Brak helpera jest widoczny jako niedostępność bez blokowania pozostałego panelu. Sprawdzanie przy starcie urządzenia i monit LCD nie są jeszcze zaimplementowane.
+
+Właściciel potwierdził działanie aktualizacji 0.1.2 z terminala. GitHub + menu urządzenia to uzgodniony kanał aktualizacji. Obecna lista czterech plików nie obejmuje WWW: ta zmiana panelu nie jest jeszcze wdrożona ani oferowana przez stable.json. Rozszerzenie instalatora wymaga osobnej migracji; nie wolno nadpisać prywatnego filtra LAN przykładowym server.py z repozytorium.

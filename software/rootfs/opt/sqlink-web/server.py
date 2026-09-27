@@ -9,9 +9,9 @@ import audio_test
 ROOT=pathlib.Path(__file__).parent/'static'
 SESSIONS={};FAILURES={};LOCK=threading.Lock();MUTATE=threading.Lock()
 def bridge(kind,payload):
- path='/run/sqlink-'+('wifi' if kind=='wifi' else 'bluetooth')+'/control.sock'
+ path={'wifi':'/run/sqlink-wifi/control.sock','bt':'/run/sqlink-bluetooth/control.sock','update':'/run/pitalk-update/control.sock'}[kind]
  with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as s:
-  s.settimeout(115);s.connect(path);s.sendall((json.dumps(payload)+'\n').encode())
+  s.settimeout(5 if kind=='update' else 115);s.connect(path);s.sendall((json.dumps(payload)+'\n').encode())
   with s.makefile('rb') as f:raw=f.readline(262145)
  if len(raw)>262144:raise ValueError('Response too large')
  return json.loads(raw)
@@ -28,7 +28,7 @@ def state():
  mode='TX' if ptt else 'OFFLINE' if not online else 'RX' if rx else 'MONITOR' if tg==0 else 'IDLE'
  return dict(profile=profile_state.current().get("name", "Unknown"),online=online,mode=mode,tg=tg,talker=talker if mode=='RX' else '',callsign=reflector.get_callsign(),uptime=int(float(pathlib.Path('/proc/uptime').read_text().split()[0])),load=os.getloadavg()[0])
 def diagnostics():
- units=['svxlink','sqlink-screen','sqlink-ptt-button','sqlink-bluetooth-helper','sqlink-wifi-helper','sqlink-web']
+ units=['svxlink','sqlink-screen','sqlink-ptt-button','sqlink-bluetooth-helper','sqlink-wifi-helper','sqlink-web','pitalk-update']
  services={}
  for u in units:
   try:services[u]=run(['systemctl','is-active',u+'.service'])
@@ -126,7 +126,7 @@ class Handler(BaseHTTPRequestHandler):
    if path=='/api/listen':
     if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session[1]['csrf']):return self.reply(403,dict(ok=False,message='Reload the page before listening.'))
     return listen_audio.stream(self)
-   routes={'/api/profiles':lambda:bridge('wifi',{'action':'profiles_snapshot'}),'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
+   routes={'/api/update':lambda:bridge('update',{'action':'status'}),'/api/profiles':lambda:bridge('wifi',{'action':'profiles_snapshot'}),'/api/audio-test':lambda:audio_test.snapshot(session[0]),'/api/session':lambda:dict(csrf=session[1]['csrf']),'/api/state':state,'/api/groups':api.get_talkgroups,'/api/activity':activity,'/api/station':lambda:station_details(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('callsign',[''])[0]),'/api/audio':lambda:bridge('bt',{'action':'status'}),'/api/bluetooth':lambda:bridge('bt',{'action':'status'}),'/api/challenge':lambda:bridge('bt',{'action':'challenge'}),'/api/wifi':lambda:bridge('wifi',{'action':'snapshot'}),'/api/user':lambda:bridge('wifi',{'action':'user_snapshot'}),'/api/system':diagnostics}
    if path not in routes:return self.reply(404,{'ok':False})
    self.reply(200,dict(ok=True,data=routes[path]()))
   except (BrokenPipeError,ConnectionResetError):pass
@@ -193,6 +193,10 @@ class Handler(BaseHTTPRequestHandler):
      result=bridge('wifi',p)
     elif path=='/api/user':
      p['action']='user_save';result=bridge('wifi',p)
+    elif path=='/api/update':
+     if p.get('action') not in ('check','install'):raise ValueError('Unsupported update action.')
+     if p['action']=='install' and p.get('confirm') is not True:raise ValueError('Confirmation required.')
+     result=bridge('update',{'action':p['action'],'confirm':p.get('confirm') is True})
     elif path=='/api/reboot':result=bridge('wifi',dict(action='restart_device',confirm=p.get('confirm') is True))
     else:return self.reply(404,dict(ok=False))
     self.reply(200,result)

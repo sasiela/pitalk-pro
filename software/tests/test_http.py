@@ -14,12 +14,12 @@ class Tests(unittest.TestCase):
   server.SESSIONS['test']=dict(csrf='csrf',expires=time.time()+100)
  @classmethod
  def tearDownClass(cls):cls.server.shutdown();cls.server.server_close()
- def call(self,method='GET',auth=True,csrf=True,body=None):
+ def call(self,method='GET',auth=True,csrf=True,body=None,path='/api/audio-test'):
   c=http.client.HTTPConnection('127.0.0.1',self.server.server_port);h={}
   if auth:h['Cookie']='session=test'
   if csrf:h['X-CSRF-Token']='csrf'
   if body is not None:h['Content-Type']='application/json'
-  c.request(method,'/api/audio-test',json.dumps(body) if body is not None else None,h);r=c.getresponse();status=r.status;obj=json.loads(r.read());c.close();return status,obj
+  c.request(method,path,json.dumps(body) if body is not None else None,h);r=c.getresponse();status=r.status;obj=json.loads(r.read());c.close();return status,obj
  def test_unauthenticated(self):self.assertEqual(self.call(auth=False)[0],401)
  def test_csrf(self):self.assertEqual(self.call('POST',csrf=False,body={'action':'start','mode':'output'})[0],403)
  def test_status(self):self.assertEqual(self.call()[0],200)
@@ -29,4 +29,21 @@ class Tests(unittest.TestCase):
    self.assertEqual(self.call('POST',body={'action':'start','mode':'microphone'})[0],200);start.assert_called_once_with('test','microphone')
   with patch.object(server.audio_test,'stop') as stop:
    self.assertEqual(self.call('POST',body={'action':'stop','id':'job'})[0],200);stop.assert_called_once_with('test','job')
+ def test_update_auth_and_confirmation(self):
+  with patch.object(server,'bridge') as bridge:
+   self.assertEqual(self.call(auth=False,path='/api/update')[0],401)
+   self.assertEqual(self.call('POST',csrf=False,body={'action':'install','confirm':True},path='/api/update')[0],403)
+   for body in ({'action':'install'},{'action':'install','confirm':'true'},{'action':'arbitrary'}):
+    self.assertEqual(self.call('POST',body=body,path='/api/update')[0],400)
+   bridge.assert_not_called()
+ def test_update_status_and_commands(self):
+  with patch.object(server,'bridge',return_value={'ok':True,'busy':False,'installed':'pitalk-v0.1.2'}) as bridge:
+   self.assertEqual(self.call(path='/api/update')[0],200)
+   bridge.assert_called_with('update',{'action':'status'})
+   for action in ('check','install'):
+    self.assertEqual(self.call('POST',body={'action':action,'confirm':True,'url':'untrusted'},path='/api/update')[0],200)
+    bridge.assert_called_with('update',{'action':action,'confirm':True})
+ def test_update_helper_unavailable(self):
+  with patch.object(server,'bridge',side_effect=OSError('socket missing')):
+   self.assertEqual(self.call(path='/api/update')[0],503)
 if __name__=='__main__':unittest.main()
