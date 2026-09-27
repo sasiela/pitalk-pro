@@ -43,22 +43,35 @@ class UpdateMenu:
             else:return True
         return False
     def render(self):
-        img=Image.new('RGB',(240,320),theme.BG);d=ImageDraw.Draw(img)
-        d.text((14,18),'System / Update',font=self.font,fill=theme.TEXT)
-        d.text((14,48),'Current: '+self.data.get('installed','...'),font=self.small,fill=theme.MUTED)
-        d.text((14,67),'Latest: '+str(self.data.get('available') or 'Check first'),font=self.small,fill=theme.MUTED)
-        d.text((14,85),'Update UI v0.1.1',font=self.small,fill=theme.MUTED)
+        img=Image.new('RGB',(240,320),theme.BG)
+        d=theme.MenuDraw(img)
+        d.text((144,29),'System Update',font=self.font,fill=theme.TEXT,anchor='mm')
+        d.line((12,46,228,46),fill=theme.LINE)
+        d.text((14,58),'Current: '+str(self.data.get('installed') or '...'),font=self.small,fill=theme.MUTED)
+        d.text((14,77),'Latest: '+str(self.data.get('available') or 'Check first'),font=self.small,fill=theme.MUTED)
         labels=['Cancel','Install now'] if self.confirm else ['Check for updates','Install update','Back']
-        if self.confirm:d.text((14,93),'Restart screen to update?',font=self.small,fill=theme.TEXT)
+        if self.confirm:
+            d.text((14,103),'Restart screen to update?',font=self.small,fill=theme.TEXT)
         for i,label in enumerate(labels):
-            y=119+34*i
-            if i==self.index:d.rounded_rectangle((10,y-3,230,y+26),radius=4,fill=theme.SELECTED)
-            d.text((17,y),label,font=self.font,fill=theme.TEXT)
-        message='Working...' if self.pending else self.data.get('message','')
-        words=message.split();lines=['']
-        for word in words:
-            if len(lines[-1])+len(word)>28:lines.append('')
-            lines[-1]+=(' ' if lines[-1] else '')+word
-        for i,line in enumerate(lines[:3]):d.text((12,231+15*i),line,font=self.small,fill=theme.ACCENT)
-        theme.footer_icons(img,right='enter',enabled=not self.data.get('busy'))
+            y=132+32*i
+            if i==self.index:
+                d.rectangle((10,y-4,229,y+24),outline='white')
+            d.text((22,y),label,font=self.font,fill=theme.TEXT)
+        message='Working...' if self.pending else str(self.data.get('message') or '')
+        # Measure pixels, including long tokens, inside a dedicated status area.
+        lines=[];line=''
+        for char in ' '.join(message.split()):
+            if d.textlength(line+char,font=self.small)>212:
+                lines.append(line.rstrip());line=char.lstrip()
+            else:line+=char
+        if line:lines.append(line)
+        if len(lines)>3:
+            lines=lines[:3]
+            while lines[-1] and d.textlength(lines[-1]+'…',font=self.small)>212:
+                lines[-1]=lines[-1][:-1]
+            lines[-1]+='…'
+        for i,line in enumerate(lines):
+            d.text((14,226+14*i),line,font=self.small,fill=theme.ACCENT)
+        d.line((12,273,228,273),fill=theme.LINE)
+        theme.footer_icons(img,right='enter',enabled=not (self.pending or self.data.get('busy')))
         return img

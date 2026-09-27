@@ -2,6 +2,12 @@
 
 Historia opisuje zmiany funkcjonalne i zakres ich sprawdzenia. Szczegóły kodu znajdują się w commitach, a gotowość do odtworzenia urządzenia w [READINESS](docs/project/READINESS.md).
 
+## 2026-09-27 — System Update 0.1.2
+
+- Dopasowano nagłówek, separatory i zaznaczenie do pozostałych menu. Usunięto dodatkową etykietę wersji testowej; wersja instalacji pozostaje w Current.
+- Potwierdzenie instalacji i komunikaty mają oddzielne obszary. Długie teksty są ograniczane według szerokości w pikselach.
+- Sprawdzono rendery 240×320 okna głównego, potwierdzenia i długiego błędu; fizyczny test instalacji przez menu pozostaje do wykonania.
+
 ## 2026-09-27 — Wydanie testowe 0.1.1
 
 - Dodano widoczny napis `Update UI v0.1.1` w menu aktualizacji, aby potwierdzić załadowanie nowego kodu po instalacji z urządzenia.

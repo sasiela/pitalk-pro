@@ -1,11 +1,11 @@
 {
   "format": 1,
-  "tag": "pitalk-v0.1.1",
-  "notes": "Visible Update UI v0.1.1 label for the first on-device update test.",
+  "tag": "pitalk-v0.1.2",
+  "notes": "System Update layout matches other menus; fixes overlapping title, confirmation and status text.",
   "files": {
     "usr/local/bin/sqlink-screen.py": "0fe1cd0ed131208ba71d1467bf5fa1e6faf64d7f96ede2ffb461b0561b37947e",
     "usr/lib/sqlink/encoder.py": "8f1dd6ad39d7ce573e24e4f67219efa353474df0e9cd33dcad565aa29670542a",
     "usr/lib/sqlink/encoder_volume.py": "3f73f8e0e9f5301643c65109bd5b6dc9a34ce1aabde6899e0686e074caf9e9e2",
-    "usr/lib/sqlink/update_ui.py": "4c90b86e69b7ffd203b042f8fe4f5c6dc3b2c3d184f2d51d3c0973adb20412c6"
+    "usr/lib/sqlink/update_ui.py": "628a29a842f189802d3cc6c992830dd8de0874021c970ab85d6ab50c65a6abba"
   }
 }

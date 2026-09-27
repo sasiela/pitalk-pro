@@ -27,3 +27,7 @@ Przy kolejnym wydaniu zmień tag w `release.json`, przelicz SHA-256 czterech pli
 ### Wdrożenie prototypu — 2026-09-27
 
 Zainstalowano i włączono usługę aktualizatora za zgodą właściciela. Ekran oraz helper aktywne, bez automatycznych restartów; świeży heartbeat po zapisie obrazu. Sprawdzenie GitHub zwróciło `Up to date`, zainstalowana i dostępna wersja `pitalk-v0.1.0`. Urządzenie nadal zgłasza bieżące undervoltage (`0x50005`); pełnej instalacji kolejnego wydania ani fizycznego rollbacku nie testowano.
+
+### Poprawka interfejsu 0.1.2 — 2026-09-27
+
+Wersja `pitalk-v0.1.2` poprawia układ System Update: nagłówek obok ikony powrotu, wspólne zaznaczenie, osobne miejsce na potwierdzenie i maksymalnie trzy linie komunikatu. Wybierz Check for updates, następnie Install update i Install now. Po instalacji sprawdź Current: pitalk-v0.1.2 oraz brak nakładania napisów. Rendery sprawdzono lokalnie; instalacja i wygląd na fizycznym LCD wymagają potwierdzenia właściciela.
